@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIUC-1 Navigator | Enterprise AI Risk Standard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-mark">
+                    <span class="logo-ai">AI</span>
+                    <span class="logo-uc">UC</span>
+                    <span class="logo-version">-1</span>
+                </div>
+                <div class="logo-tagline">Enterprise AI Risk Standard</div>
+            </div>
+            <nav class="header-nav">
+                <a href="https://www.aiuc-1.com" target="_blank" class="nav-link">
+                    <span>Official Standard</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M3.5 2.5H9.5V8.5M9.5 2.5L2.5 9.5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line title-line-1">Navigate</span>
+                    <span class="title-line title-line-2">51 Requirements</span>
+                    <span class="title-line title-line-3">Across <em>6 Principles</em></span>
+                </h1>
+                <p class="hero-description">
+                    Interactive reference for the AIUC-1 standard—the enterprise framework for AI risk management covering data privacy, security, safety, reliability, accountability, and societal impact.
+                </p>
+                <p class="hero-disclaimer">
+                    This is an unofficial community project, not affiliated with AIUC-1. Built by <a href="https://adversis.io" target="_blank">Adversis</a> because we think this standard is a great idea.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" data-principle="mandatory">
+                    <span class="stat-number" id="mandatory-count">0</span>
+                    <span class="stat-label">Mandatory</span>
+                </div>
+                <div class="stat-card" data-principle="optional">
+                    <span class="stat-number" id="optional-count">0</span>
+                    <span class="stat-label">Optional</span>
+                </div>
+                <div class="stat-card" data-principle="filtered">
+                    <span class="stat-number" id="filtered-count">0</span>
+                    <span class="stat-label">Showing</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="principles-nav">
+            <div class="principles-header">
+                <span class="section-label">Filter by Principle</span>
+            </div>
+            <div class="principles-grid">
+                <button class="principle-btn active" data-principle="all">
+                    <span class="principle-letter">*</span>
+                    <span class="principle-name">All</span>
+                    <span class="principle-count" id="count-all">51</span>
+                </button>
+                <button class="principle-btn" data-principle="A">
+                    <span class="principle-letter">A</span>
+                    <span class="principle-name">Data & Privacy</span>
+                    <span class="principle-count" id="count-A">7</span>
+                </button>
+                <button class="principle-btn" data-principle="B">
+                    <span class="principle-letter">B</span>
+                    <span class="principle-name">Security</span>
+                    <span class="principle-count" id="count-B">9</span>
+                </button>
+                <button class="principle-btn" data-principle="C">
+                    <span class="principle-letter">C</span>
+                    <span class="principle-name">Safety</span>
+                    <span class="principle-count" id="count-C">12</span>
+                </button>
+                <button class="principle-btn" data-principle="D">
+                    <span class="principle-letter">D</span>
+                    <span class="principle-name">Reliability</span>
+                    <span class="principle-count" id="count-D">4</span>
+                </button>
+                <button class="principle-btn" data-principle="E">
+                    <span class="principle-letter">E</span>
+                    <span class="principle-name">Accountability</span>
+                    <span class="principle-count" id="count-E">17</span>
+                </button>
+                <button class="principle-btn" data-principle="F">
+                    <span class="principle-letter">F</span>
+                    <span class="principle-name">Society</span>
+                    <span class="principle-count" id="count-F">2</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="filters-section">
+            <div class="search-container">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <input type="text" id="search-input" class="search-input" placeholder="Search requirements, keywords, frameworks...">
+                <kbd class="search-kbd">/</kbd>
+            </div>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label class="filter-label">Status</label>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" data-status="all">All</button>
+                        <button class="toggle-btn" data-status="Mandatory">Mandatory</button>
+                        <button class="toggle-btn" data-status="Optional">Optional</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Framework</label>
+                    <select id="framework-filter" class="framework-select">
+                        <option value="all">All Frameworks</option>
+                        <option value="EU AI Act">EU AI Act</option>
+                        <option value="ISO 42001">ISO 42001</option>
+                        <option value="NIST AI RMF">NIST AI RMF</option>
+                        <option value="OWASP Top 10">OWASP Top 10</option>
+                        <option value="MITRE ATLAS">MITRE ATLAS</option>
+                        <option value="CSA AICM">CSA AICM</option>
+                    </select>
+                </div>
+                <button class="export-btn" id="export-csv">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 10V13H14V10M8 2V10M8 10L4 6M8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Export CSV
+                </button>
+            </div>
+        </section>
+
+        <section class="requirements-section">
+            <div class="table-container">
+                <table class="requirements-table">
+                    <thead>
+                        <tr>
+                            <th class="col-id sortable" data-sort="id">
+                                <span>ID</span>
+                                <svg class="sort-icon" width="12" height="12" viewBox="0 0 12 12">
+                                    <path d="M6 2L9 5H3L6 2Z" fill="currentColor" class="sort-up"/>
+                                    <path d="M6 10L3 7H9L6 10Z" fill="currentColor" class="sort-down"/>
+                                </svg>
+                            </th>
+                            <th class="col-principle">Principle</th>
+                            <th class="col-title sortable" data-sort="title">
+                                <span>Requirement</span>
+                                <svg class="sort-icon" width="12" height="12" viewBox="0 0 12 12">
+                                    <path d="M6 2L9 5H3L6 2Z" fill="currentColor" class="sort-up"/>
+                                    <path d="M6 10L3 7H9L6 10Z" fill="currentColor" class="sort-down"/>
+                                </svg>
+                            </th>
+                            <th class="col-status">Status</th>
+                            <th class="col-frequency">Frequency</th>
+                            <th class="col-frameworks">Frameworks</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requirements-body">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="requirement-modal">
+            <button class="modal-close" id="modal-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="modal-content" id="modal-content">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span class="footer-brand">AIUC-1 Navigator</span>
+                <span class="footer-divider">·</span>
+                <span class="footer-version">v1.0</span>
+            </div>
+            <div class="footer-right">
+                <span>Data sourced from <a href="https://www.aiuc-1.com" target="_blank">aiuc-1.com</a></span>
+                <span class="footer-divider">·</span>
+                <span>Built by <a href="https://adversis.io" target="_blank">Adversis</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

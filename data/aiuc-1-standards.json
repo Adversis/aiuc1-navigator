@@ -1,0 +1,5426 @@
+{
+  "metadata": {
+    "standard": "AIUC-1",
+    "version": "1.0",
+    "description": "AI Use Case Standard for Enterprise AI Risk Management",
+    "source": "https://www.aiuc-1.com",
+    "lastUpdated": "2025-12-10",
+    "totalRequirements": 51
+  },
+  "principles": [
+    {
+      "id": "A",
+      "name": "Data & Privacy",
+      "description": "Safeguarding customer information against leakage, IP exposure, and unauthorized training use"
+    },
+    {
+      "id": "B",
+      "name": "Security",
+      "description": "Defending against adversarial testing, prompt injection, and jailbreak attempts"
+    },
+    {
+      "id": "C",
+      "name": "Safety",
+      "description": "Mitigating harmful outputs and protecting brand reputation through testing and monitoring"
+    },
+    {
+      "id": "D",
+      "name": "Reliability",
+      "description": "Preventing hallucinations and unauthorized tool calls that cause customer harm"
+    },
+    {
+      "id": "E",
+      "name": "Accountability",
+      "description": "Enforcing governance through approval processes and failure planning"
+    },
+    {
+      "id": "F",
+      "name": "Society",
+      "description": "Preventing AI-enabled societal harms including cyber exploitation and catastrophic risks"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "A001",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Establish input data policy",
+      "description": "Establish and communicate AI input data policies covering customer data usage for model training, inference processing, data retention periods, and customer rights",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Data Retention",
+        "Model Training Data",
+        "Opt-Out"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining input data usage policies with opt-in/opt-out mechanisms and disclosure requirements",
+          "Implementing data retention and deletion procedures for training data, inference logs, and customer-submitted content",
+          "Documenting and justifying retention periods for different data categories"
+        ],
+        "mayInclude": [
+          "Documenting processes for customer data subject rights (access, portability, deletion requests)",
+          "Maintaining records of which datasets were used to train specific models"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 11: Technical Documentation"
+        ],
+        "ISO 42001": [
+          "A.7.2",
+          "A.7.3"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.10"
+        ],
+        "CSA AICM": [
+          "DSP-11",
+          "DSP-12",
+          "DSP-13",
+          "DSP-14",
+          "DSP-15",
+          "DSP-16",
+          "DSP-17",
+          "DSP-18",
+          "DSP-19",
+          "DSP-20",
+          "DSP-21",
+          "DSP-22",
+          "DSP-23"
+        ]
+      },
+      "url": "/data-and-privacy/establish-data-use-policy",
+      "gettingStarted": {
+        "overview": "Start by inventorying all data flows into your AI system, then create a simple policy document defining retention periods and customer rights.",
+        "steps": [
+          "List all data sources feeding your AI (chat logs, uploads, API inputs)",
+          "Define retention periods for each data type (30/60/90 days)",
+          "Draft a 1-page policy covering opt-out and deletion rights",
+          "Add policy link to your terms of service",
+          "Set calendar reminder for annual review"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "type": "free",
+            "url": "https://sheets.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "OneTrust",
+            "type": "paid",
+            "url": "https://onetrust.com"
+          }
+        ],
+        "template": {
+          "description": "Data inventory tracking retention and policies",
+          "columns": [
+            "Data Source",
+            "Data Type",
+            "Retention Period",
+            "Legal Basis",
+            "Deletion Process",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "Chat logs",
+              "User prompts",
+              "90 days",
+              "Legitimate interest",
+              "Auto-purge",
+              "Engineering"
+            ],
+            [
+              "File uploads",
+              "Documents",
+              "30 days",
+              "Contract",
+              "Manual request",
+              "Support"
+            ]
+          ]
+        },
+        "tip": "Don't overcomplicate it - a simple Google Sheet inventory is better than no inventory. You can upgrade to GRC software later."
+      }
+    },
+    {
+      "id": "A002",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Establish output data policy",
+      "description": "Establish AI output ownership, usage, opt-out and deletion policies to customers and communicate these policies",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Data Ownership",
+        "Usage",
+        "Deletion",
+        "Consent",
+        "Opt-Out"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining output ownership rights with clear distinctions between customer inputs and AI outputs",
+          "Disclosing consent and opt-out procedures for outputs",
+          "Establishing output usage policies communicated through accessible terms of service"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "CSA AICM": [
+          "DSP-16",
+          "DSP-08",
+          "STA-10"
+        ]
+      },
+      "url": "/data-and-privacy/define-output-rights",
+      "gettingStarted": {
+        "overview": "Define who owns AI-generated outputs and how customers can opt out of having their outputs used for training or other purposes.",
+        "steps": [
+          "Decide output ownership stance (customer owns, shared, company owns)",
+          "Document opt-out process for output re-use",
+          "Add clear language to terms of service",
+          "Create customer-facing FAQ on output rights",
+          "Brief customer success team on policy"
+        ],
+        "tools": [
+          {
+            "name": "Google Docs",
+            "type": "free",
+            "url": "https://docs.google.com"
+          },
+          {
+            "name": "Termly",
+            "type": "free",
+            "url": "https://termly.io"
+          },
+          {
+            "name": "Ironclad",
+            "type": "paid",
+            "url": "https://ironcladapp.com"
+          }
+        ],
+        "template": {
+          "description": "Output rights policy decision matrix",
+          "columns": [
+            "Output Type",
+            "Ownership",
+            "Can Reuse for Training?",
+            "Opt-Out Method",
+            "Deletion SLA"
+          ],
+          "rows": [
+            [
+              "Generated text",
+              "Customer",
+              "No (default)",
+              "Account settings",
+              "7 days"
+            ],
+            [
+              "Summaries",
+              "Shared",
+              "Yes with consent",
+              "Email request",
+              "30 days"
+            ]
+          ]
+        },
+        "tip": "Most mid-market companies should default to 'customer owns output' - it's simpler and builds trust."
+      }
+    },
+    {
+      "id": "A003",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Limit AI agent data collection",
+      "description": "Implement safeguards to restrict AI agent data access to task-relevant information based on user roles and context",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Data Collection",
+        "Data Access",
+        "Agent Permissions",
+        "Access Permissions"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Configure data collection limits to reduce privacy exposure through time-bounded, task-specific, purpose-limited contextual data",
+          "Implement scoping actions based on agent objectives, session type, or workflow stage"
+        ],
+        "mayInclude": [
+          "Deploy monitoring and enforcement mechanisms ensuring systems perform only necessary inference",
+          "Integrate with identity and access management systems to align agent permissions with organizational policies",
+          "Establish dynamic context-based restrictions that adjust access when user roles or environments change"
+        ]
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "MAP 2.1"
+        ],
+        "OWASP Top 10": [
+          "LLM06:25",
+          "LLM08:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "DSP-07",
+          "DSP-08",
+          "DSP-22",
+          "AIS-11",
+          "IAM-17",
+          "IAM-19",
+          "MDS-04"
+        ],
+        "ISO 42001": [
+          "A.7.2",
+          "A.7.3"
+        ],
+        "MITRE ATLAS": [
+          "Data protection principles"
+        ]
+      },
+      "url": "/data-and-privacy/implement-contextual-data-safeguards",
+      "gettingStarted": {
+        "overview": "Configure your AI agents to only access data they need for the specific task, based on user roles and session context.",
+        "steps": [
+          "Map which data sources each AI feature needs",
+          "Implement role-based access controls for AI tools",
+          "Set session-based data access limits",
+          "Log and audit data access patterns quarterly",
+          "Review and revoke unused permissions"
+        ],
+        "tools": [
+          {
+            "name": "Okta",
+            "type": "paid",
+            "url": "https://okta.com"
+          },
+          {
+            "name": "AWS IAM",
+            "type": "free",
+            "url": "https://aws.amazon.com/iam"
+          },
+          {
+            "name": "OpenPolicy Agent",
+            "type": "oss",
+            "url": "https://openpolicyagent.org"
+          }
+        ],
+        "template": {
+          "description": "Agent permission matrix by role and task",
+          "columns": [
+            "AI Feature",
+            "User Role",
+            "Data Access Scope",
+            "Session Limit",
+            "Review Date"
+          ],
+          "rows": [
+            [
+              "Doc summarizer",
+              "All users",
+              "User's docs only",
+              "1 hour",
+              "Q1 2025"
+            ],
+            [
+              "Data analyst",
+              "Analysts+",
+              "Team datasets",
+              "8 hours",
+              "Q1 2025"
+            ]
+          ]
+        },
+        "tip": "Start with deny-by-default, then grant specific permissions. It's easier to open up than lock down later."
+      }
+    },
+    {
+      "id": "A004",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Protect IP & trade secrets",
+      "description": "Implement safeguards or technical controls to prevent AI systems from leaking company intellectual property or confidential information",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Intellectual Property",
+        "Confidential Information",
+        "Data Protections"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Document foundation model provider safeguards as primary IP protection",
+          "Establish supplementary data access controls where provider protections are insufficient"
+        ],
+        "mayInclude": [
+          "Implement output monitoring procedures with automated review for high-risk scenarios",
+          "Maintain internal IP incident response procedures as part of AI failure planning"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0020"
+        ],
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "OWASP Top 10": [
+          "LLM03:25",
+          "LLM05:25",
+          "LLM08:25"
+        ],
+        "CSA AICM": [
+          "DSP-01",
+          "DSP-10",
+          "DSP-02",
+          "DSP-07",
+          "DSP-08",
+          "DSP-16",
+          "UEM-08",
+          "DSP-12"
+        ]
+      },
+      "url": "/data-and-privacy/protect-ip-trade-secrets",
+      "gettingStarted": {
+        "overview": "Review your AI provider's data handling terms and implement additional controls to prevent leaking proprietary information through AI outputs.",
+        "steps": [
+          "Review foundation model provider's data handling policies",
+          "Identify sensitive data categories (code, financials, strategy)",
+          "Implement input filters for highly sensitive content",
+          "Set up output scanning for proprietary info",
+          "Create incident response procedure for IP leaks"
+        ],
+        "tools": [
+          {
+            "name": "Nightfall AI",
+            "type": "paid",
+            "url": "https://nightfall.ai"
+          },
+          {
+            "name": "Microsoft Purview",
+            "type": "paid",
+            "url": "https://microsoft.com/purview"
+          },
+          {
+            "name": "Regex filters",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "Sensitive data classification and controls",
+          "columns": [
+            "Data Category",
+            "Sensitivity",
+            "AI Input Allowed?",
+            "Control Method",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "Source code",
+              "High",
+              "With review",
+              "Code scanning",
+              "Engineering"
+            ],
+            [
+              "Customer PII",
+              "High",
+              "No",
+              "Input filter",
+              "Security"
+            ]
+          ]
+        },
+        "tip": "Start with your top 3 most sensitive data types. You don't need to classify everything on day one."
+      }
+    },
+    {
+      "id": "A005",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Prevent cross-customer data exposure",
+      "description": "Implement safeguards to prevent cross-customer data exposure when combining customer data from multiple sources",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Cross-Customer Data",
+        "Model Training",
+        "Data Rights"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Explicit consent and disclosure when data combines with competitor data",
+          "Customer data isolation controls with logical/physical separation"
+        ],
+        "mayInclude": [
+          "Privacy-enhancing technologies (PETs) like differential privacy or federated learning",
+          "Inference-time isolation with tenant-aware routing",
+          "Industry-specific safeguards with stricter isolation for same-vertical customers"
+        ]
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "MEASURE 2.10"
+        ],
+        "OWASP Top 10": [
+          "LLM02:25",
+          "LLM05:25",
+          "LLM08:25"
+        ],
+        "CSA AICM": [
+          "I&S-06",
+          "DSP-22",
+          "UEM-08"
+        ]
+      },
+      "url": "/data-and-privacy/prevent-cross-customer-data-exposure",
+      "gettingStarted": {
+        "overview": "Ensure customer data from one organization cannot leak into outputs for another customer, especially in multi-tenant AI deployments.",
+        "steps": [
+          "Verify your AI provider's tenant isolation approach",
+          "Implement customer-specific API keys or namespaces",
+          "Disable cross-customer data use for model training",
+          "Test isolation with synthetic data from fake customers",
+          "Document isolation architecture for audits"
+        ],
+        "tools": [
+          {
+            "name": "Azure OpenAI",
+            "type": "paid",
+            "url": "https://azure.microsoft.com/openai"
+          },
+          {
+            "name": "AWS Bedrock",
+            "type": "paid",
+            "url": "https://aws.amazon.com/bedrock"
+          },
+          {
+            "name": "Langfuse",
+            "type": "oss",
+            "url": "https://langfuse.com"
+          }
+        ],
+        "template": {
+          "description": "Customer isolation verification checklist",
+          "columns": [
+            "Isolation Layer",
+            "Method",
+            "Verified?",
+            "Test Date",
+            "Notes"
+          ],
+          "rows": [
+            [
+              "API access",
+              "Separate API keys",
+              "Yes",
+              "2024-01",
+              "Per-customer keys"
+            ],
+            [
+              "Model context",
+              "Session isolation",
+              "Yes",
+              "2024-01",
+              "No cross-session memory"
+            ]
+          ]
+        },
+        "tip": "If using a shared AI service, opt out of training data sharing and get it in writing from your provider."
+      }
+    },
+    {
+      "id": "A006",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Prevent PII leakage",
+      "description": "Establish safeguards to prevent personal data leakage through AI outputs",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Personal Data Leakage"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Data segregation controls to isolate user sessions",
+          "Safeguards between users with user-specific output boundaries",
+          "Documentation identifying PII and defining output handling policies"
+        ],
+        "mayInclude": [
+          "Output monitoring scanning for cross-customer leakage",
+          "Automated detection/redaction using NER or classification tools",
+          "DLP integration to block policy violations"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0020"
+        ],
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.10"
+        ],
+        "OWASP Top 10": [
+          "LLM02:25",
+          "LLM05:25",
+          "LLM08:25"
+        ],
+        "CSA AICM": [
+          "DSP-10",
+          "DSP-17",
+          "HRS-12",
+          "DSP-13",
+          "UEM-08"
+        ]
+      },
+      "url": "/data-and-privacy/prevent-pii-leakage",
+      "gettingStarted": {
+        "overview": "Implement technical controls to prevent AI from outputting personal information like names, emails, or SSNs in responses.",
+        "steps": [
+          "Define PII categories relevant to your business",
+          "Deploy output scanning for common PII patterns",
+          "Implement redaction or blocking for detected PII",
+          "Log PII detection events for review",
+          "Test with synthetic PII to verify controls work"
+        ],
+        "tools": [
+          {
+            "name": "Presidio",
+            "type": "oss",
+            "url": "https://microsoft.github.io/presidio"
+          },
+          {
+            "name": "AWS Comprehend",
+            "type": "paid",
+            "url": "https://aws.amazon.com/comprehend"
+          },
+          {
+            "name": "Google DLP",
+            "type": "paid",
+            "url": "https://cloud.google.com/dlp"
+          }
+        ],
+        "template": {
+          "description": "PII detection rules and actions",
+          "columns": [
+            "PII Type",
+            "Detection Method",
+            "Action",
+            "False Positive Rate",
+            "Last Tested"
+          ],
+          "rows": [
+            [
+              "Email addresses",
+              "Regex + NER",
+              "Redact",
+              "2%",
+              "2024-01"
+            ],
+            [
+              "SSN",
+              "Regex pattern",
+              "Block output",
+              "<1%",
+              "2024-01"
+            ]
+          ]
+        },
+        "tip": "Start with Presidio (free, open-source) for basic PII detection before investing in enterprise DLP tools."
+      }
+    },
+    {
+      "id": "A007",
+      "principle": "A",
+      "principleName": "Data & Privacy",
+      "title": "Prevent IP violations",
+      "description": "Implement safeguards and technical controls to prevent AI outputs from violating copyrights, trademarks, or other third-party intellectual property rights",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Intellectual Property",
+        "Copyright Protection"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Document provider protections for copyright and trademark handling",
+          "Establish supplementary filtering for copyright/trademark violations"
+        ],
+        "mayInclude": [
+          "Implement user guidance explaining prohibited content types",
+          "Embed warnings for high-risk prompts",
+          "Maintain incident response procedures for potential infringement"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0020"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 6.1",
+          "MAP 4.1"
+        ],
+        "ISO 42001": [
+          "A.7.5"
+        ],
+        "OWASP Top 10": [
+          "LLM03:25",
+          "LLM05:25"
+        ],
+        "CSA AICM": [
+          "AIS-09"
+        ]
+      },
+      "url": "/data-and-privacy/prevent-ip-violations",
+      "gettingStarted": {
+        "overview": "Prevent your AI from generating content that violates copyrights or trademarks, relying first on your provider's built-in protections.",
+        "steps": [
+          "Review your AI provider's copyright/trademark policies",
+          "Document which content types are high-risk (code, images, text)",
+          "Add user guidance on prohibited content requests",
+          "Implement output filtering for known copyrighted patterns",
+          "Create procedure for handling infringement reports"
+        ],
+        "tools": [
+          {
+            "name": "Provider policies",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Copyscape",
+            "type": "paid",
+            "url": "https://copyscape.com"
+          },
+          {
+            "name": "GPTZero",
+            "type": "free",
+            "url": "https://gptzero.me"
+          }
+        ],
+        "template": {
+          "description": "Copyright risk assessment by content type",
+          "columns": [
+            "Content Type",
+            "Risk Level",
+            "Provider Coverage",
+            "Additional Control",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "Code generation",
+              "Medium",
+              "Partial",
+              "License header check",
+              "Engineering"
+            ],
+            [
+              "Marketing copy",
+              "Low",
+              "Yes",
+              "Plagiarism scan",
+              "Marketing"
+            ]
+          ]
+        },
+        "tip": "Most major AI providers have built-in copyright protections - document what they cover so you know your gaps."
+      }
+    },
+    {
+      "id": "B001",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Third-party testing of adversarial robustness",
+      "description": "Implement adversarial testing program to validate system resilience against adversarial inputs and prompt injection attempts in line with adversarial threat taxonomy",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Adversarial Testing",
+        "Red Teaming",
+        "Prompt Injection",
+        "Jailbreak"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Risk taxonomy establishment referencing NIST AI 100-2e2023 attack classifications",
+          "Quarterly comprehensive testing with red-teaming, prompt injection assessments, jailbreaking attempts",
+          "Secure documentation of test cases, methods, and outcomes",
+          "Improvement processes with remediation owners and severity-based timelines"
+        ],
+        "mayInclude": [
+          "Integrate AI-specific test cases into penetration testing programs",
+          "Share threat models across red/blue teams",
+          "Align test cycles with security audit calendars"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0003",
+          "AML-M0004"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MEASURE 2.1",
+          "MEASURE 2.6",
+          "MEASURE 2.7"
+        ],
+        "OWASP Top 10": [
+          "LLM01:25",
+          "LLM04:25",
+          "LLM05:25",
+          "LLM08:25"
+        ],
+        "CSA AICM": [
+          "AIS-07",
+          "MDS-06",
+          "MDS-07",
+          "TVM-01",
+          "TVM-02",
+          "TVM-03",
+          "TVM-04",
+          "TVM-05",
+          "TVM-06",
+          "TVM-07",
+          "TVM-08",
+          "TVM-09",
+          "TVM-10",
+          "TVM-11",
+          "TVM-12",
+          "TVM-13"
+        ]
+      },
+      "url": "/security/test-adversarial-robustness",
+      "gettingStarted": {
+        "overview": "Conduct quarterly security testing of your AI system against prompt injection, jailbreaks, and other adversarial attacks using automated tools or third-party testers.",
+        "steps": [
+          "Select an adversarial testing tool or vendor",
+          "Define test scope (prompts, jailbreaks, data extraction)",
+          "Run initial baseline assessment",
+          "Document findings and assign severity levels",
+          "Track remediation and retest quarterly"
+        ],
+        "tools": [
+          {
+            "name": "Garak",
+            "type": "oss",
+            "url": "https://github.com/leondz/garak"
+          },
+          {
+            "name": "PromptFoo",
+            "type": "free",
+            "url": "https://promptfoo.dev"
+          },
+          {
+            "name": "HaizeLabz",
+            "type": "paid",
+            "url": "https://haizelabs.com"
+          }
+        ],
+        "template": {
+          "description": "Adversarial test results tracker",
+          "columns": [
+            "Test Category",
+            "Test Count",
+            "Pass",
+            "Fail",
+            "Severity",
+            "Remediation Status"
+          ],
+          "rows": [
+            [
+              "Prompt injection",
+              "50",
+              "45",
+              "5",
+              "High",
+              "In progress"
+            ],
+            [
+              "Jailbreak attempts",
+              "30",
+              "28",
+              "2",
+              "Medium",
+              "Fixed"
+            ]
+          ]
+        },
+        "tip": "Start with free tools like Garak or PromptFoo for quarterly self-assessment, then consider paid vendors for annual deep-dives."
+      }
+    },
+    {
+      "id": "B002",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Detect adversarial input",
+      "description": "Implement monitoring capabilities to detect and respond to adversarial inputs and prompt injection attempts",
+      "status": "Optional",
+      "frequency": "Every 3 months",
+      "type": "Detective",
+      "keywords": [
+        "Monitor",
+        "Adversarial",
+        "Jailbreak",
+        "Prompt Injection"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Detection and alerting for prompt injection patterns, jailbreak techniques, and rate limit violations",
+          "Incident logging and response with timestamps and user context",
+          "Quarterly effectiveness reviews updating detection rules"
+        ],
+        "mayInclude": [
+          "Pre-processing detection with pattern-matching and behavioral heuristics",
+          "Security integration forwarding flagged inputs to SIEM platforms"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0003",
+          "AML-M0015",
+          "AML-M0024",
+          "AML-M0021"
+        ],
+        "EU AI Act": [
+          "Article 15",
+          "Article 72"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.5",
+          "MEASURE 2.4",
+          "MEASURE 2.7",
+          "MEASURE 3.1"
+        ],
+        "OWASP Top 10": [
+          "LLM01:25",
+          "LLM08:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "AIS-08",
+          "MDS-07",
+          "TVM-01",
+          "TVM-04",
+          "UEM-09",
+          "TVM-02",
+          "AIS-10",
+          "LOG-14"
+        ]
+      },
+      "url": "/security/detect-adversarial-input",
+      "gettingStarted": {
+        "overview": "Set up real-time monitoring to detect and alert on adversarial inputs like prompt injection attempts or jailbreak patterns.",
+        "steps": [
+          "Define detection patterns for common attacks",
+          "Implement input logging with pattern matching",
+          "Set up alerting thresholds and escalation",
+          "Create incident response runbook",
+          "Review detection effectiveness quarterly"
+        ],
+        "tools": [
+          {
+            "name": "LangSmith",
+            "type": "free",
+            "url": "https://smith.langchain.com"
+          },
+          {
+            "name": "Datadog LLM Observability",
+            "type": "paid",
+            "url": "https://datadoghq.com"
+          },
+          {
+            "name": "Rebuff",
+            "type": "oss",
+            "url": "https://github.com/protectai/rebuff"
+          }
+        ],
+        "template": {
+          "description": "Adversarial detection rules and thresholds",
+          "columns": [
+            "Attack Pattern",
+            "Detection Method",
+            "Alert Threshold",
+            "Action",
+            "Last Updated"
+          ],
+          "rows": [
+            [
+              "Ignore previous instructions",
+              "Keyword match",
+              "1 occurrence",
+              "Log + flag",
+              "2024-01"
+            ],
+            [
+              "System prompt extraction",
+              "Pattern regex",
+              "Any match",
+              "Block + alert",
+              "2024-01"
+            ]
+          ]
+        },
+        "tip": "Start simple with keyword-based detection, then graduate to ML-based classifiers as you collect labeled examples."
+      }
+    },
+    {
+      "id": "B003",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Manage public release of technical details",
+      "description": "Implement controls to prevent over-disclosure of technical information about AI systems and organizational details that could enable adversarial targeting",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Public Disclosure",
+        "Open-Source",
+        "External Threats"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Documenting limitations on technical information release",
+          "Controlling organizational information disclosure"
+        ],
+        "mayInclude": [
+          "Establishing approval processes for public content referencing AI capabilities"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0000",
+          "AML-M0001"
+        ],
+        "OWASP Top 10": [
+          "LLM02:25",
+          "LLM07:25"
+        ],
+        "CSA AICM": [
+          "AIS-09",
+          "AIS-15"
+        ]
+      },
+      "url": "/security/limit-technical-over-disclosure",
+      "gettingStarted": {
+        "overview": "Control what technical details about your AI systems are shared publicly to prevent adversaries from crafting targeted attacks.",
+        "steps": [
+          "Inventory public AI-related content (docs, blogs, talks)",
+          "Define sensitivity levels for technical details",
+          "Create approval process for AI-related publications",
+          "Review existing public content for over-disclosure",
+          "Train team on disclosure guidelines"
+        ],
+        "tools": [
+          {
+            "name": "Confluence",
+            "type": "paid",
+            "url": "https://atlassian.com/confluence"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Google Docs",
+            "type": "free",
+            "url": "https://docs.google.com"
+          }
+        ],
+        "template": {
+          "description": "Technical disclosure classification",
+          "columns": [
+            "Information Type",
+            "Disclosure Level",
+            "Approval Required",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Model architecture",
+              "Internal only",
+              "VP Engineering",
+              "Using GPT-4 Turbo"
+            ],
+            [
+              "Use cases",
+              "Public",
+              "Marketing",
+              "Customer support chatbot"
+            ]
+          ]
+        },
+        "tip": "You don't need to hide everything - focus on details that would help attackers craft specific exploits."
+      }
+    },
+    {
+      "id": "B004",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Prevent AI endpoint scraping",
+      "description": "Implement safeguards to prevent probing or scraping of external AI endpoints",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Scraping",
+        "Probing",
+        "Rate Limiting",
+        "Query Quotas",
+        "Zero Trust"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Usage pattern distinction using behavioral analytics",
+          "Rate limiting and query controls with per-user quotas",
+          "Simulated attack testing against endpoints",
+          "Endpoint security remediation based on test outcomes"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0003",
+          "AML-M0004"
+        ],
+        "EU AI Act": [
+          "Article 15"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.7"
+        ],
+        "OWASP Top 10": [
+          "LLM02:25",
+          "LLM05:25",
+          "LLM08:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "AIS-10",
+          "UEM-01",
+          "UEM-05",
+          "UEM-09",
+          "UEM-10",
+          "UEM-14",
+          "TVM-06"
+        ]
+      },
+      "url": "/security/prevent-ai-endpoint-scraping",
+      "gettingStarted": {
+        "overview": "Implement rate limiting and abuse detection to prevent attackers from scraping your AI endpoints or extracting model behavior patterns.",
+        "steps": [
+          "Implement per-user rate limits on AI endpoints",
+          "Set up anomaly detection for usage patterns",
+          "Block or throttle suspicious IP addresses",
+          "Monitor for bulk data extraction attempts",
+          "Test rate limits with simulated attacks"
+        ],
+        "tools": [
+          {
+            "name": "Cloudflare",
+            "type": "free",
+            "url": "https://cloudflare.com"
+          },
+          {
+            "name": "AWS WAF",
+            "type": "paid",
+            "url": "https://aws.amazon.com/waf"
+          },
+          {
+            "name": "Kong Gateway",
+            "type": "oss",
+            "url": "https://konghq.com"
+          }
+        ],
+        "template": {
+          "description": "Rate limit configuration by endpoint",
+          "columns": [
+            "Endpoint",
+            "Rate Limit",
+            "Window",
+            "Burst Allowed",
+            "Block Duration"
+          ],
+          "rows": [
+            [
+              "/api/chat",
+              "60 req",
+              "1 minute",
+              "10 extra",
+              "5 minutes"
+            ],
+            [
+              "/api/embed",
+              "100 req",
+              "1 minute",
+              "20 extra",
+              "10 minutes"
+            ]
+          ]
+        },
+        "tip": "Start with generous rate limits and tighten based on actual abuse patterns - don't block legitimate users."
+      }
+    },
+    {
+      "id": "B005",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Implement real-time input filtering",
+      "description": "Deploy automated moderation tools for real-time input filtering",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Detective",
+      "keywords": [
+        "Prompt Injection",
+        "Jailbreak",
+        "Adversarial Input Protection"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Integrate automated moderation tools scanning for violations",
+          "Block, redirect, or modify flagged inputs before model processing",
+          "Establish confidence thresholds for block/warn/log/allow actions",
+          "Document moderation logic and tool selection rationale"
+        ],
+        "mayInclude": [
+          "Provide user feedback when inputs are blocked",
+          "Log flagged prompts for filter refinement",
+          "Periodically evaluate filter performance"
+        ]
+      },
+      "frameworkMappings": {
+        "OWASP Top 10": [
+          "LLM01:25",
+          "LLM04:25",
+          "LLM10:25"
+        ],
+        "MITRE ATLAS": [
+          "AML-M0015",
+          "AML-M0021"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.7"
+        ],
+        "CSA AICM": [
+          "LOG-14",
+          "AIS-08",
+          "AIS-15"
+        ]
+      },
+      "url": "/security/implement-real-time-input-filtering",
+      "gettingStarted": {
+        "overview": "Deploy automated content moderation to filter harmful, policy-violating, or adversarial inputs before they reach your AI model.",
+        "steps": [
+          "Select a content moderation API or library",
+          "Define content categories to filter (violence, hate, etc.)",
+          "Set confidence thresholds for block vs. warn",
+          "Implement pre-model input filtering",
+          "Monitor false positive rates and adjust"
+        ],
+        "tools": [
+          {
+            "name": "OpenAI Moderation API",
+            "type": "free",
+            "url": "https://platform.openai.com/docs/guides/moderation"
+          },
+          {
+            "name": "Perspective API",
+            "type": "free",
+            "url": "https://perspectiveapi.com"
+          },
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          }
+        ],
+        "template": {
+          "description": "Content moderation thresholds and actions",
+          "columns": [
+            "Category",
+            "Confidence Threshold",
+            "Action",
+            "User Message",
+            "Log"
+          ],
+          "rows": [
+            [
+              "Violence",
+              "0.8",
+              "Block",
+              "Content policy violation",
+              "Yes"
+            ],
+            [
+              "Self-harm",
+              "0.7",
+              "Block + resources",
+              "Includes support info",
+              "Yes"
+            ]
+          ]
+        },
+        "tip": "OpenAI's Moderation API is free and works well as a first layer - no need to build your own classifier."
+      }
+    },
+    {
+      "id": "B006",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Limit AI agent system access",
+      "description": "Implement safeguards to limit AI agent system access based on context and declared objectives",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Access Permissions",
+        "Agent Permissions"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Contextual access controls with task-based tool access",
+          "Privilege limiting to prevent access escalation",
+          "Monitoring and enforcement of operational scope"
+        ],
+        "mayInclude": [
+          "Automatic restriction triggers when context diverges",
+          "IAM integration aligning agent privileges with user roles"
+        ]
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "MAP 2.1"
+        ],
+        "OWASP Top 10": [
+          "LLM08:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "AIS-11",
+          "IAM-19",
+          "DSP-07"
+        ]
+      },
+      "url": "/security/enforce-contextual-access-controls",
+      "gettingStarted": {
+        "overview": "Restrict what data and systems your AI agents can access based on the task context and user permissions.",
+        "steps": [
+          "Map all tools/APIs your AI agents can call",
+          "Define permission levels by user role",
+          "Implement task-scoped access controls",
+          "Log all agent actions for audit",
+          "Review and revoke unused permissions"
+        ],
+        "tools": [
+          {
+            "name": "LangChain Tools",
+            "type": "oss",
+            "url": "https://python.langchain.com"
+          },
+          {
+            "name": "OpenAI Function Calling",
+            "type": "paid",
+            "url": "https://platform.openai.com"
+          },
+          {
+            "name": "Anthropic Tool Use",
+            "type": "paid",
+            "url": "https://anthropic.com"
+          }
+        ],
+        "template": {
+          "description": "Agent tool permissions by role",
+          "columns": [
+            "Tool/API",
+            "Admin",
+            "Manager",
+            "User",
+            "Guest"
+          ],
+          "rows": [
+            [
+              "Database read",
+              "Yes",
+              "Yes",
+              "Own data",
+              "No"
+            ],
+            [
+              "File upload",
+              "Yes",
+              "Yes",
+              "Yes",
+              "No"
+            ],
+            [
+              "External API",
+              "Yes",
+              "Request",
+              "No",
+              "No"
+            ]
+          ]
+        },
+        "tip": "Use JSON schemas to strictly define what parameters agents can pass to tools - prevents parameter injection."
+      }
+    },
+    {
+      "id": "B007",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Enforce user access privileges to AI systems",
+      "description": "Establish and maintain user access controls and admin privileges for AI systems in line with policy",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Access Controls",
+        "Organizational Policy"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "System-level access controls based on job function",
+          "Administrative privilege restrictions to authorized personnel",
+          "Quarterly access reviews and updates"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0005",
+          "AML-M0019"
+        ],
+        "OWASP Top 10": [
+          "LLM02:25",
+          "LLM06:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "IAM controls",
+          "DSP controls",
+          "LOG controls"
+        ]
+      },
+      "url": "/security/enforce-ai-access-privileges",
+      "gettingStarted": {
+        "overview": "Set up role-based access controls for who can use, configure, and administer your AI systems.",
+        "steps": [
+          "Define AI system access roles (user, power user, admin)",
+          "Implement authentication for AI endpoints",
+          "Restrict model configuration to admins only",
+          "Set up quarterly access reviews",
+          "Log all admin actions"
+        ],
+        "tools": [
+          {
+            "name": "Auth0",
+            "type": "free",
+            "url": "https://auth0.com"
+          },
+          {
+            "name": "Okta",
+            "type": "paid",
+            "url": "https://okta.com"
+          },
+          {
+            "name": "Keycloak",
+            "type": "oss",
+            "url": "https://keycloak.org"
+          }
+        ],
+        "template": {
+          "description": "AI system access roles and permissions",
+          "columns": [
+            "Permission",
+            "User",
+            "Power User",
+            "Admin",
+            "Review Frequency"
+          ],
+          "rows": [
+            [
+              "Use chat features",
+              "Yes",
+              "Yes",
+              "Yes",
+              "N/A"
+            ],
+            [
+              "Modify system prompt",
+              "No",
+              "No",
+              "Yes",
+              "Quarterly"
+            ],
+            [
+              "Access usage logs",
+              "Own only",
+              "Team",
+              "All",
+              "Quarterly"
+            ]
+          ]
+        },
+        "tip": "Start with 3 roles max (user, admin, super-admin). You can add granularity later if needed."
+      }
+    },
+    {
+      "id": "B008",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Protect model deployment environment",
+      "description": "Implement security measures for AI model deployment environments including encryption, access controls and authorization",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Model Environment",
+        "Encryption",
+        "Access Controls"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Model access protection with MFA and user access reviews",
+          "Deployment security controls with scoped API tokens and TLS"
+        ],
+        "mayInclude": [
+          "Model hosting environment security with minimal container images",
+          "Model integrity verification using cryptographic checksums"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0005",
+          "AML-M0012",
+          "AML-M0019"
+        ],
+        "EU AI Act": [
+          "Article 15"
+        ],
+        "OWASP Top 10": [
+          "LLM07:25"
+        ],
+        "CSA AICM": [
+          "AIS-06",
+          "AIS-14",
+          "CEK-01 to CEK-21",
+          "IAM-04",
+          "IAM-14",
+          "MDS-01",
+          "MDS-02",
+          "MDS-08",
+          "MDS-09",
+          "UEM-08",
+          "DSP-07"
+        ]
+      },
+      "url": "/security/protect-model-deployment-environment",
+      "gettingStarted": {
+        "overview": "Secure your AI model deployment infrastructure with encryption, access controls, and environment hardening.",
+        "steps": [
+          "Enable TLS for all AI API endpoints",
+          "Implement API key or token authentication",
+          "Restrict deployment environment access",
+          "Enable audit logging for infrastructure changes",
+          "Scan container images for vulnerabilities"
+        ],
+        "tools": [
+          {
+            "name": "Let's Encrypt",
+            "type": "free",
+            "url": "https://letsencrypt.org"
+          },
+          {
+            "name": "HashiCorp Vault",
+            "type": "oss",
+            "url": "https://vaultproject.io"
+          },
+          {
+            "name": "Trivy",
+            "type": "oss",
+            "url": "https://trivy.dev"
+          }
+        ],
+        "template": {
+          "description": "Deployment security checklist",
+          "columns": [
+            "Control",
+            "Status",
+            "Implementation",
+            "Last Verified",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "TLS encryption",
+              "Done",
+              "Let's Encrypt",
+              "2024-01",
+              "DevOps"
+            ],
+            [
+              "API authentication",
+              "Done",
+              "JWT tokens",
+              "2024-01",
+              "Engineering"
+            ],
+            [
+              "Container scanning",
+              "In progress",
+              "Trivy CI/CD",
+              "Pending",
+              "Security"
+            ]
+          ]
+        },
+        "tip": "If using managed AI services (OpenAI, Azure, etc.), most infrastructure security is handled - focus on your API layer."
+      }
+    },
+    {
+      "id": "B009",
+      "principle": "B",
+      "principleName": "Security",
+      "title": "Limit output over-exposure",
+      "description": "Implement output limitations and obfuscation techniques to safeguard against information leakage",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Output Obfuscation",
+        "Fidelity Reduction",
+        "Information Leakage",
+        "Adversarial Use",
+        "Response Filtering"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Restricting result quantities to balance security with utility",
+          "Filtering sensitive system details from outputs",
+          "Providing user-facing notices on output limitations"
+        ],
+        "mayInclude": [
+          "Reducing numerical output precision through rounding or obfuscation"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0002"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.10"
+        ],
+        "OWASP Top 10": [
+          "LLM02:25",
+          "LLM05:25",
+          "LLM08:25",
+          "LLM09:25"
+        ],
+        "CSA AICM": [
+          "AIS-09"
+        ]
+      },
+      "url": "/security/limit-output-over-exposure",
+      "gettingStarted": {
+        "overview": "Limit the amount and precision of information in AI outputs to prevent data extraction or model inversion attacks.",
+        "steps": [
+          "Set maximum output length limits",
+          "Filter system prompt and model details from outputs",
+          "Round or truncate numerical outputs where appropriate",
+          "Add rate limits on high-volume output requests",
+          "Inform users of output limitations"
+        ],
+        "tools": [
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          },
+          {
+            "name": "NeMo Guardrails",
+            "type": "oss",
+            "url": "https://github.com/NVIDIA/NeMo-Guardrails"
+          },
+          {
+            "name": "Custom middleware",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "Output limitation rules",
+          "columns": [
+            "Output Type",
+            "Limit",
+            "Filtering Applied",
+            "User Notice"
+          ],
+          "rows": [
+            [
+              "Text response",
+              "4000 chars",
+              "System prompt stripped",
+              "Response truncated"
+            ],
+            [
+              "List items",
+              "50 max",
+              "None",
+              "Limited to 50 results"
+            ]
+          ]
+        },
+        "tip": "Always strip system prompts and internal reasoning from user-visible outputs - use a dedicated output sanitizer."
+      }
+    },
+    {
+      "id": "C001",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Define AI risk taxonomy",
+      "description": "Establish a risk taxonomy that categorizes risks within harmful, out-of-scope, and hallucinated outputs, tool calls, and other risks based on application-specific usage",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Risk Taxonomy",
+        "Severity Rating"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Risk category definition for harmful outputs",
+          "Framework alignment with NIST AI RMF, EU AI Act, ISO 42001",
+          "Severity grading with consistent scoring methodology",
+          "Taxonomy currency with quarterly reviews"
+        ],
+        "mayInclude": [
+          "Identify additional harm categories specific to operational context"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 9"
+        ],
+        "ISO 42001": [
+          "A.5.2",
+          "A.5.3",
+          "A.5.4",
+          "A.5.5",
+          "4.1",
+          "6.1.1",
+          "6.1.2",
+          "6.1.3",
+          "6.1.4",
+          "8.2",
+          "8.3",
+          "8.4"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.3",
+          "GOVERN 1.4",
+          "GOVERN 4.2",
+          "MANAGE 1.2",
+          "MANAGE 1.3",
+          "MANAGE 1.4",
+          "MAP 1.5",
+          "MAP 5.1",
+          "MEASURE 1.1",
+          "MEASURE 2.10",
+          "MEASURE 2.11",
+          "MEASURE 3.1"
+        ],
+        "CSA AICM": [
+          "A&A-05",
+          "A&A-06",
+          "BCR-02",
+          "CEK-07",
+          "DSP-09",
+          "GRC-02",
+          "MDS-11",
+          "MDS-12",
+          "CCC-03"
+        ]
+      },
+      "url": "/safety/define-ai-risk-taxonomy",
+      "gettingStarted": {
+        "overview": "Create a documented classification of AI risks specific to your application, covering harmful outputs, scope violations, and hallucinations.",
+        "steps": [
+          "Define risk categories relevant to your use case",
+          "Assign severity levels (Critical, High, Medium, Low)",
+          "Document examples for each category",
+          "Map categories to your monitoring and response",
+          "Review and update taxonomy quarterly"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "type": "free",
+            "url": "https://sheets.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Jira",
+            "type": "paid",
+            "url": "https://atlassian.com/jira"
+          }
+        ],
+        "template": {
+          "description": "AI risk taxonomy with severity and examples",
+          "columns": [
+            "Risk Category",
+            "Severity",
+            "Example",
+            "Detection Method",
+            "Response"
+          ],
+          "rows": [
+            [
+              "Harmful advice",
+              "Critical",
+              "Medical dosage guidance",
+              "Keyword + classifier",
+              "Block + escalate"
+            ],
+            [
+              "Off-topic response",
+              "Low",
+              "Political commentary",
+              "Topic classifier",
+              "Redirect"
+            ]
+          ]
+        },
+        "tip": "Start with 5-10 risk categories that matter most for your use case. You can expand later."
+      }
+    },
+    {
+      "id": "C002",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Conduct pre-deployment testing",
+      "description": "Conduct internal testing of AI systems before deployment across risk categories including high-risk, harmful, hallucinated, and out-of-scope outputs and tool calls for system changes requiring formal review or approval",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Internal Testing",
+        "Pre-Deployment Testing"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Testing with documented results including hallucination testing and adversarial prompting",
+          "Risk assessments before deployment with impact analysis",
+          "Approval sign-offs from accountable leads"
+        ],
+        "mayInclude": [
+          "SDLC integration with CI/CD or MLOps pipelines",
+          "Vulnerability scanning of model files"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0016"
+        ],
+        "EU AI Act": [
+          "Article 9",
+          "Article 27"
+        ],
+        "ISO 42001": [
+          "A.6.2.5",
+          "A.6.2.4"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 1.1",
+          "MAP 4.2",
+          "MEASURE 2.1",
+          "MEASURE 2.3",
+          "MEASURE 2.5",
+          "MEASURE 4.3"
+        ],
+        "CSA AICM": [
+          "AIS-05",
+          "AIS-06",
+          "AIS-07",
+          "AIS-12",
+          "CCC-02",
+          "AIS-04",
+          "TVM-05"
+        ]
+      },
+      "url": "/safety/conduct-pre-deployment-testing",
+      "gettingStarted": {
+        "overview": "Test your AI system internally before deployment against your defined risk categories, documenting results and getting sign-off.",
+        "steps": [
+          "Create test cases for each risk category",
+          "Run automated tests against staging environment",
+          "Document pass/fail results with evidence",
+          "Get approval sign-off from accountable owner",
+          "Archive test results for audit"
+        ],
+        "tools": [
+          {
+            "name": "PromptFoo",
+            "type": "free",
+            "url": "https://promptfoo.dev"
+          },
+          {
+            "name": "pytest",
+            "type": "oss",
+            "url": "https://pytest.org"
+          },
+          {
+            "name": "Weights & Biases",
+            "type": "free",
+            "url": "https://wandb.ai"
+          }
+        ],
+        "template": {
+          "description": "Pre-deployment test results",
+          "columns": [
+            "Test Category",
+            "Test Count",
+            "Passed",
+            "Failed",
+            "Blocker?",
+            "Approved By"
+          ],
+          "rows": [
+            [
+              "Harmful outputs",
+              "25",
+              "24",
+              "1",
+              "No",
+              "J. Smith"
+            ],
+            [
+              "Hallucinations",
+              "50",
+              "48",
+              "2",
+              "No",
+              "J. Smith"
+            ]
+          ]
+        },
+        "tip": "Build test cases incrementally from real incidents - your best tests come from things that actually went wrong."
+      }
+    },
+    {
+      "id": "C003",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Prevent harmful outputs",
+      "description": "Implement safeguards or technical controls to prevent harmful outputs including distressed outputs, angry responses, high-risk advice, offensive content, bias, and deception",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Harmful Outputs",
+        "Distressed",
+        "Angry",
+        "Advice",
+        "Offensive",
+        "Bias"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Content filtering implementation for harmful content types",
+          "Safety guardrails for advice generation in sensitive domains",
+          "Bias detection and mitigation controls"
+        ],
+        "mayInclude": [
+          "Performance metrics evaluation tracking false positives/negatives",
+          "Review and appeal mechanisms for flagged outputs"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 9"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.11"
+        ],
+        "OWASP Top 10": [
+          "LLM05:25",
+          "LLM09:25"
+        ],
+        "CSA AICM": [
+          "AIS-09",
+          "GRC-11",
+          "GRC-09",
+          "LOG-15",
+          "TVM-11"
+        ]
+      },
+      "url": "/safety/prevent-harmful-outputs",
+      "gettingStarted": {
+        "overview": "Implement content filtering to prevent your AI from generating harmful outputs like dangerous advice, offensive content, or biased responses.",
+        "steps": [
+          "Define harmful output categories for your context",
+          "Implement output content classification",
+          "Set up blocking or modification for flagged content",
+          "Log flagged outputs for review",
+          "Tune thresholds based on false positive rates"
+        ],
+        "tools": [
+          {
+            "name": "OpenAI Moderation",
+            "type": "free",
+            "url": "https://platform.openai.com/docs/guides/moderation"
+          },
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          },
+          {
+            "name": "LlamaGuard",
+            "type": "oss",
+            "url": "https://github.com/meta-llama/llama-recipes"
+          }
+        ],
+        "template": {
+          "description": "Harmful output detection and response",
+          "columns": [
+            "Category",
+            "Detection Method",
+            "Threshold",
+            "Action",
+            "Fallback Response"
+          ],
+          "rows": [
+            [
+              "Medical advice",
+              "Keyword + classifier",
+              "0.7",
+              "Block",
+              "Consult a healthcare provider"
+            ],
+            [
+              "Profanity",
+              "Word list",
+              "Any match",
+              "Filter",
+              "Clean response"
+            ]
+          ]
+        },
+        "tip": "Layer multiple detection methods - keyword matching for obvious cases, ML classifiers for subtle ones."
+      }
+    },
+    {
+      "id": "C004",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Prevent out-of-scope outputs",
+      "description": "Implement safeguards or technical controls to prevent out-of-scope outputs such as political discussion or healthcare advice that fall outside the AI system's intended use cases",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Out-of-Scope",
+        "Political Discussion",
+        "Technical Controls"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Topic boundary enforcement detecting and redirecting off-topic conversations",
+          "Scope violation response procedures with automated redirection",
+          "Scope monitoring and adjustment tracking boundary violations"
+        ],
+        "mayInclude": [
+          "User education on system scope and limitations"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "NIST AI RMF": [
+          "MAP 2.2",
+          "MAP 3.4"
+        ],
+        "OWASP Top 10": [
+          "LLM05:25"
+        ],
+        "CSA AICM": [
+          "AIS-09",
+          "GRC-09",
+          "LOG-15",
+          "TVM-11"
+        ]
+      },
+      "url": "/safety/prevent-out-of-scope-outputs",
+      "gettingStarted": {
+        "overview": "Implement guardrails to keep your AI focused on its intended purpose and prevent it from discussing off-topic subjects.",
+        "steps": [
+          "Define your AI's intended scope clearly",
+          "Create a list of off-limits topics",
+          "Implement topic detection and redirection",
+          "Create helpful redirect messages",
+          "Monitor scope violations for pattern analysis"
+        ],
+        "tools": [
+          {
+            "name": "NeMo Guardrails",
+            "type": "oss",
+            "url": "https://github.com/NVIDIA/NeMo-Guardrails"
+          },
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          },
+          {
+            "name": "Custom prompting",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "Scope boundary definitions",
+          "columns": [
+            "Topic Area",
+            "In Scope?",
+            "Detection Method",
+            "Redirect Message"
+          ],
+          "rows": [
+            [
+              "Product questions",
+              "Yes",
+              "N/A",
+              "N/A"
+            ],
+            [
+              "Political opinions",
+              "No",
+              "Topic classifier",
+              "I focus on [product] questions"
+            ],
+            [
+              "Medical advice",
+              "No",
+              "Keyword match",
+              "Please consult a healthcare provider"
+            ]
+          ]
+        },
+        "tip": "Write clear redirect messages that acknowledge the user's question while guiding them back on-topic."
+      }
+    },
+    {
+      "id": "C005",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Prevent customer-defined high risk outputs",
+      "description": "Implement safeguards or technical controls to prevent additional high risk outputs as defined in risk taxonomy",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "High-Risk Outputs",
+        "Risk Taxonomy",
+        "Technical Controls"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Detection and blocking mechanisms aligned with risk taxonomy",
+          "Risk-based response controls with flagging and logging"
+        ],
+        "mayInclude": [
+          "Escalation procedures for flagged high risk content",
+          "Automated real-time response mechanisms"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 9"
+        ],
+        "NIST AI RMF": [
+          "MANAGE 1.4"
+        ],
+        "OWASP Top 10": [
+          "LLM05:25"
+        ],
+        "CSA AICM": [
+          "GRC-09",
+          "LOG-15",
+          "TVM-11",
+          "STA-10"
+        ]
+      },
+      "url": "/safety/prevent-other-high-risk-outputs",
+      "gettingStarted": {
+        "overview": "Implement additional safety controls for high-risk outputs specific to your business context, beyond generic harmful content.",
+        "steps": [
+          "Identify business-specific high-risk scenarios",
+          "Define detection criteria for each scenario",
+          "Implement targeted guardrails",
+          "Set up alerting for high-risk detections",
+          "Review and adjust based on incidents"
+        ],
+        "tools": [
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          },
+          {
+            "name": "Custom validators",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Aporia",
+            "type": "paid",
+            "url": "https://aporia.com"
+          }
+        ],
+        "template": {
+          "description": "Customer-specific risk controls",
+          "columns": [
+            "Risk Scenario",
+            "Business Impact",
+            "Detection",
+            "Response",
+            "Escalation"
+          ],
+          "rows": [
+            [
+              "Price quote errors",
+              "Revenue loss",
+              "Price validator",
+              "Human review",
+              "Sales manager"
+            ],
+            [
+              "Contract advice",
+              "Legal liability",
+              "Legal keyword match",
+              "Disclaimer + block",
+              "Legal team"
+            ]
+          ]
+        },
+        "tip": "Think about what could go wrong in YOUR specific business - generic safety isn't enough."
+      }
+    },
+    {
+      "id": "C006",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Prevent output vulnerabilities",
+      "description": "Implement safeguards to prevent security vulnerabilities in outputs from impacting users",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Harmful Outputs",
+        "Code Injection",
+        "Data Exfiltration"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Output sanitization and validation before content presentation",
+          "Safety-specific labeling and handling protocols",
+          "Detection and monitoring capabilities for suspicious content"
+        ],
+        "mayInclude": [
+          "Detecting advanced attack patterns like prompt injection chains"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0020"
+        ],
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "OWASP Top 10": [
+          "LLM05:25"
+        ],
+        "CSA AICM": [
+          "AIS-09",
+          "TVM-02",
+          "AIS-07"
+        ]
+      },
+      "url": "/safety/prevent-output-vulnerabilities",
+      "gettingStarted": {
+        "overview": "Sanitize AI outputs to prevent code injection, XSS, or other security vulnerabilities from affecting downstream systems or users.",
+        "steps": [
+          "Identify where AI outputs are rendered (web, email, APIs)",
+          "Implement output encoding/escaping per context",
+          "Strip or sanitize HTML, JavaScript, SQL from outputs",
+          "Test with known attack payloads",
+          "Monitor for suspicious output patterns"
+        ],
+        "tools": [
+          {
+            "name": "DOMPurify",
+            "type": "oss",
+            "url": "https://github.com/cure53/DOMPurify"
+          },
+          {
+            "name": "OWASP Java Encoder",
+            "type": "oss",
+            "url": "https://owasp.org/owasp-java-encoder"
+          },
+          {
+            "name": "bleach (Python)",
+            "type": "oss",
+            "url": "https://github.com/mozilla/bleach"
+          }
+        ],
+        "template": {
+          "description": "Output sanitization by context",
+          "columns": [
+            "Output Context",
+            "Sanitization Method",
+            "Encoding",
+            "Test Frequency"
+          ],
+          "rows": [
+            [
+              "Web display",
+              "DOMPurify",
+              "HTML entity",
+              "Each deploy"
+            ],
+            [
+              "Email body",
+              "Text only",
+              "Plain text",
+              "Each deploy"
+            ],
+            [
+              "API response",
+              "JSON escape",
+              "UTF-8",
+              "Each deploy"
+            ]
+          ]
+        },
+        "tip": "Treat AI output like untrusted user input - never render it directly without sanitization."
+      }
+    },
+    {
+      "id": "C007",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Flag high risk recommendations",
+      "description": "Implement an alerting system that flags high-risk recommendations for human review",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Human Review",
+        "Escalation"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining risk criteria based on organizational risk taxonomy",
+          "Implementing detection using keyword filtering or confidence scoring",
+          "Establishing review workflows with designated reviewers and escalation procedures"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0020"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 3.2",
+          "MAP 3.5"
+        ],
+        "CSA AICM": [
+          "GRC-15"
+        ],
+        "ISO 42001": [
+          "A.6.1.2",
+          "A.9.3",
+          "A.9.2"
+        ]
+      },
+      "url": "/safety/flag-high-risk-recommendations",
+      "gettingStarted": {
+        "overview": "Set up a flagging system to route high-risk AI recommendations to human reviewers before they're acted upon.",
+        "steps": [
+          "Define which outputs require human review",
+          "Implement confidence-based flagging",
+          "Create a review queue with SLAs",
+          "Train reviewers on approval criteria",
+          "Track review volume and turnaround time"
+        ],
+        "tools": [
+          {
+            "name": "Retool",
+            "type": "free",
+            "url": "https://retool.com"
+          },
+          {
+            "name": "Slack workflows",
+            "type": "free",
+            "url": "https://slack.com"
+          },
+          {
+            "name": "HumanLoop",
+            "type": "paid",
+            "url": "https://humanloop.com"
+          }
+        ],
+        "template": {
+          "description": "Human review queue configuration",
+          "columns": [
+            "Trigger Condition",
+            "Queue",
+            "SLA",
+            "Reviewer",
+            "Escalation"
+          ],
+          "rows": [
+            [
+              "Financial advice > $10K",
+              "Finance review",
+              "1 hour",
+              "Finance team",
+              "CFO"
+            ],
+            [
+              "Legal questions",
+              "Legal review",
+              "4 hours",
+              "Legal team",
+              "General counsel"
+            ]
+          ]
+        },
+        "tip": "Start with a simple Slack channel for human review - you can build a proper queue later if volume demands it."
+      }
+    },
+    {
+      "id": "C008",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Monitor AI risk categories",
+      "description": "Implement monitoring of AI systems across risk categories",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Detective",
+      "keywords": [
+        "Monitoring",
+        "High-Risk Outputs"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Proactive detection implementation based on risk taxonomy",
+          "Ongoing monitoring with regular evaluations",
+          "Documentation maintenance with clear examples"
+        ],
+        "mayInclude": [
+          "Integration with existing security tools",
+          "Standard logging formats for automated threat detection"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "ISO 42001": [
+          "A.5.4",
+          "A.6.2.6",
+          "A.9.4",
+          "6.1.1",
+          "6.1.2",
+          "6.1.3",
+          "8.2",
+          "8.3",
+          "9.1"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.5",
+          "MANAGE 3.1",
+          "MANAGE 4.1",
+          "MEASURE 2.4",
+          "MEASURE 4.3"
+        ],
+        "CSA AICM": [
+          "GRC-02",
+          "MDS-11",
+          "TVM-03",
+          "MDS-12",
+          "TVM-07"
+        ]
+      },
+      "url": "/safety/monitor-ai-risk-categories",
+      "gettingStarted": {
+        "overview": "Set up ongoing monitoring of your AI system's outputs against your risk taxonomy to detect emerging issues.",
+        "steps": [
+          "Instrument output logging with risk category tagging",
+          "Create dashboards showing risk category trends",
+          "Set up alerts for risk threshold breaches",
+          "Schedule weekly risk report reviews",
+          "Update monitoring as new risks emerge"
+        ],
+        "tools": [
+          {
+            "name": "Langfuse",
+            "type": "oss",
+            "url": "https://langfuse.com"
+          },
+          {
+            "name": "Weights & Biases",
+            "type": "free",
+            "url": "https://wandb.ai"
+          },
+          {
+            "name": "Datadog",
+            "type": "paid",
+            "url": "https://datadoghq.com"
+          }
+        ],
+        "template": {
+          "description": "Risk monitoring dashboard metrics",
+          "columns": [
+            "Risk Category",
+            "This Week",
+            "Last Week",
+            "Trend",
+            "Alert Threshold"
+          ],
+          "rows": [
+            [
+              "Harmful outputs blocked",
+              "12",
+              "8",
+              "Up 50%",
+              "20/week"
+            ],
+            [
+              "Hallucinations flagged",
+              "45",
+              "52",
+              "Down 13%",
+              "100/week"
+            ]
+          ]
+        },
+        "tip": "Start with simple counts and trends - you can add sophisticated anomaly detection later."
+      }
+    },
+    {
+      "id": "C009",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Enable real-time feedback and intervention",
+      "description": "Implement mechanisms to enable real-time user feedback collection and intervention mechanisms during AI system interactions",
+      "status": "Optional",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Feedback",
+        "Intervention",
+        "User Control",
+        "Transparency"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "On-screen communication systems with status and alerts",
+          "User intervention capabilities like pause/stop functions",
+          "Accessibility compliance with WCAG 2.1",
+          "Regular review of feedback logs"
+        ],
+        "mayInclude": [
+          "Analyzing feedback using structured methodologies"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 14"
+        ],
+        "ISO 42001": [
+          "A.8.3"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 3.2",
+          "MAP 3.5",
+          "MEASURE 3.3"
+        ],
+        "CSA AICM": [
+          "GRC-15"
+        ]
+      },
+      "url": "/safety/collect-real-time-feedback",
+      "gettingStarted": {
+        "overview": "Give users the ability to stop AI interactions, provide feedback, and flag problematic outputs in real-time.",
+        "steps": [
+          "Add stop/cancel buttons to AI interfaces",
+          "Implement thumbs up/down feedback on outputs",
+          "Create 'Report issue' flow for users",
+          "Route feedback to appropriate reviewers",
+          "Analyze feedback patterns weekly"
+        ],
+        "tools": [
+          {
+            "name": "Custom UI components",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Intercom",
+            "type": "paid",
+            "url": "https://intercom.com"
+          },
+          {
+            "name": "Canny",
+            "type": "free",
+            "url": "https://canny.io"
+          }
+        ],
+        "template": {
+          "description": "User feedback collection and routing",
+          "columns": [
+            "Feedback Type",
+            "Collection Method",
+            "Routing",
+            "Response SLA"
+          ],
+          "rows": [
+            [
+              "Thumbs down",
+              "In-app button",
+              "Product team queue",
+              "N/A (async review)"
+            ],
+            [
+              "Report harmful",
+              "Flag button",
+              "Safety team Slack",
+              "4 hours"
+            ],
+            [
+              "General feedback",
+              "Text input",
+              "Canny board",
+              "1 week"
+            ]
+          ]
+        },
+        "tip": "Make feedback friction-free - one click to flag, optional text for details."
+      }
+    },
+    {
+      "id": "C010",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Third-party testing for harmful outputs",
+      "description": "Appoint expert third parties to evaluate system robustness to harmful outputs including distressed outputs, angry responses, high-risk advice, offensive content, bias, and deception at least every 3 months",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Harmful Outputs",
+        "Distressed",
+        "Angry",
+        "Advice",
+        "Offensive",
+        "Bias",
+        "Risk Severity",
+        "Toxigen",
+        "Third-Party Testing"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Qualified assessor selection with documented expertise",
+          "Regular testing execution quarterly using industry benchmarks",
+          "Documentation maintenance of results and remediation"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 2.2",
+          "MEASURE 1.3",
+          "MEASURE 2.1",
+          "MEASURE 2.6",
+          "MEASURE 2.11",
+          "MEASURE 4.1",
+          "MEASURE 4.2"
+        ],
+        "EU AI Act": [
+          "Article 9"
+        ],
+        "CSA AICM": [
+          "GRC-11",
+          "A&A-02",
+          "TVM-06"
+        ],
+        "ISO 42001": [
+          "A.6.2.4"
+        ]
+      },
+      "url": "/safety/3rd-party-testing-for-harmful-outputs",
+      "gettingStarted": {
+        "overview": "Engage a third-party to quarterly test your AI system for harmful outputs using standard benchmarks and red-teaming.",
+        "steps": [
+          "Select a testing vendor or use automated tools",
+          "Define test scope based on risk taxonomy",
+          "Schedule quarterly assessments",
+          "Review findings and prioritize remediation",
+          "Track remediation completion"
+        ],
+        "tools": [
+          {
+            "name": "HaizeLabz",
+            "type": "paid",
+            "url": "https://haizelabs.com"
+          },
+          {
+            "name": "Patronus AI",
+            "type": "paid",
+            "url": "https://patronus.ai"
+          },
+          {
+            "name": "Garak (self-service)",
+            "type": "oss",
+            "url": "https://github.com/leondz/garak"
+          }
+        ],
+        "template": {
+          "description": "Third-party testing schedule and results",
+          "columns": [
+            "Quarter",
+            "Vendor/Tool",
+            "Findings",
+            "Critical",
+            "Remediated",
+            "Open"
+          ],
+          "rows": [
+            [
+              "Q1 2024",
+              "Garak (internal)",
+              "15",
+              "2",
+              "14",
+              "1"
+            ],
+            [
+              "Q2 2024",
+              "HaizeLabz",
+              "8",
+              "1",
+              "8",
+              "0"
+            ]
+          ]
+        },
+        "tip": "Alternate between self-service tools (quarterly) and paid vendors (annually) to balance cost and coverage."
+      }
+    },
+    {
+      "id": "C011",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Third-party testing for out-of-scope outputs",
+      "description": "Appoint qualified external assessors to evaluate system robustness against out-of-scope outputs (e.g., political discussion, healthcare advice) at minimum quarterly intervals",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Out-of-Scope",
+        "Political Discussion",
+        "Third-Party Testing"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Qualified third-party assessor selection",
+          "Regular testing protocol quarterly",
+          "Documentation of findings and remediation"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 2.2",
+          "MAP 2.2",
+          "MEASURE 1.3",
+          "MEASURE 2.1",
+          "MEASURE 2.6",
+          "MEASURE 4.1",
+          "MEASURE 4.2"
+        ],
+        "ISO 42001": [
+          "A.6.2.4"
+        ]
+      },
+      "url": "/safety/3rd-party-testing-for-out-of-scope-outputs",
+      "gettingStarted": {
+        "overview": "Have third-party testers evaluate your AI's ability to stay on-topic and not generate out-of-scope content.",
+        "steps": [
+          "Define scope boundaries for testing",
+          "Engage tester with boundary test cases",
+          "Run quarterly scope violation testing",
+          "Document findings with severity ratings",
+          "Remediate and retest failures"
+        ],
+        "tools": [
+          {
+            "name": "PromptFoo",
+            "type": "free",
+            "url": "https://promptfoo.dev"
+          },
+          {
+            "name": "Custom test suites",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Patronus AI",
+            "type": "paid",
+            "url": "https://patronus.ai"
+          }
+        ],
+        "template": {
+          "description": "Scope violation test results",
+          "columns": [
+            "Test Category",
+            "Probes Sent",
+            "Stayed On-Topic",
+            "Scope Violations",
+            "Severity"
+          ],
+          "rows": [
+            [
+              "Political topics",
+              "25",
+              "23",
+              "2",
+              "Medium"
+            ],
+            [
+              "Competitor discussion",
+              "20",
+              "19",
+              "1",
+              "Low"
+            ]
+          ]
+        },
+        "tip": "Build scope tests from real user attempts to misuse your system - check your logs for inspiration."
+      }
+    },
+    {
+      "id": "C012",
+      "principle": "C",
+      "principleName": "Safety",
+      "title": "Third-party testing for customer-defined risk",
+      "description": "Appoint expert third-parties to evaluate system robustness to additional high-risk outputs as defined in risk taxonomy at least every 3 months",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "High-Risk Outputs",
+        "Risk Taxonomy",
+        "Third-Party Testing"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Appointing qualified third-party assessors",
+          "Conducting regular testing quarterly",
+          "Maintaining documentation of results and remediation"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 2.2",
+          "MEASURE 1.3",
+          "MEASURE 2.1",
+          "MEASURE 2.6",
+          "MEASURE 4.1",
+          "MEASURE 4.2"
+        ],
+        "ISO 42001": [
+          "A.6.2.4"
+        ],
+        "CSA AICM": [
+          "A&A-02",
+          "TVM-06"
+        ]
+      },
+      "url": "/safety/3rd-party-testing-for-other-risk",
+      "gettingStarted": {
+        "overview": "Have third-party testers evaluate your AI against business-specific high-risk scenarios from your risk taxonomy.",
+        "steps": [
+          "Extract high-risk scenarios from your taxonomy",
+          "Create test cases for each scenario",
+          "Engage third-party or run internal tests quarterly",
+          "Document findings with business impact",
+          "Prioritize remediation by risk level"
+        ],
+        "tools": [
+          {
+            "name": "PromptFoo",
+            "type": "free",
+            "url": "https://promptfoo.dev"
+          },
+          {
+            "name": "Custom validators",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Patronus AI",
+            "type": "paid",
+            "url": "https://patronus.ai"
+          }
+        ],
+        "template": {
+          "description": "Custom risk testing results",
+          "columns": [
+            "Risk Scenario",
+            "Test Cases",
+            "Passed",
+            "Failed",
+            "Business Impact",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Incorrect pricing",
+              "30",
+              "28",
+              "2",
+              "Revenue",
+              "Remediated"
+            ],
+            [
+              "Unauthorized discounts",
+              "15",
+              "15",
+              "0",
+              "Revenue",
+              "Passed"
+            ]
+          ]
+        },
+        "tip": "Work with your business stakeholders to prioritize which risks to test - not all failures are equal."
+      }
+    },
+    {
+      "id": "D001",
+      "principle": "D",
+      "principleName": "Reliability",
+      "title": "Prevent hallucinated outputs",
+      "description": "Implement safeguards or technical controls to prevent hallucinated outputs",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Hallucinations",
+        "Technical Controls"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Factual accuracy controls with fact-checking mechanisms",
+          "Information source validation requiring citations"
+        ],
+        "mayInclude": [
+          "Uncertainty communication displaying confidence levels"
+        ]
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "MEASURE 2.5"
+        ],
+        "OWASP Top 10": [
+          "LLM05:25",
+          "LLM09:25"
+        ],
+        "CSA AICM": [
+          "AIS-09",
+          "MDS-10",
+          "MDS-11"
+        ]
+      },
+      "url": "/reliability/prevent-hallucinated-outputs",
+      "gettingStarted": {
+        "overview": "Implement controls to reduce hallucinations through grounding, citations, and confidence thresholds.",
+        "steps": [
+          "Implement RAG or grounding with verified sources",
+          "Require citations for factual claims",
+          "Display confidence levels to users",
+          "Set up hallucination detection monitoring",
+          "Create fallback responses for low-confidence answers"
+        ],
+        "tools": [
+          {
+            "name": "LangChain RAG",
+            "type": "oss",
+            "url": "https://python.langchain.com"
+          },
+          {
+            "name": "Pinecone",
+            "type": "free",
+            "url": "https://pinecone.io"
+          },
+          {
+            "name": "Vectara",
+            "type": "free",
+            "url": "https://vectara.com"
+          }
+        ],
+        "template": {
+          "description": "Hallucination prevention controls",
+          "columns": [
+            "Control",
+            "Implementation",
+            "Coverage",
+            "Effectiveness",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "RAG grounding",
+              "Pinecone + LangChain",
+              "All factual Q&A",
+              "~80% reduction",
+              "ML team"
+            ],
+            [
+              "Citation requirement",
+              "System prompt",
+              "Product info",
+              "~60% reduction",
+              "ML team"
+            ]
+          ]
+        },
+        "tip": "RAG alone doesn't eliminate hallucinations - combine it with explicit 'I don't know' instructions in your prompt."
+      }
+    },
+    {
+      "id": "D002",
+      "principle": "D",
+      "principleName": "Reliability",
+      "title": "Third-party testing for hallucinations",
+      "description": "Appoint qualified external assessors to evaluate hallucinated outputs at minimum quarterly intervals",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Hallucinations",
+        "Third-Party Testing"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Qualified assessor selection with documented expertise",
+          "Regular assessment execution quarterly",
+          "Documentation maintenance of findings and remediation"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 2.2",
+          "MEASURE 1.3",
+          "MEASURE 2.1",
+          "MEASURE 2.5",
+          "MEASURE 4.1",
+          "MEASURE 4.2"
+        ],
+        "OWASP Top 10": [
+          "LLM09:25"
+        ],
+        "CSA AICM": [
+          "AIS-09",
+          "AIS-05",
+          "MDS-06",
+          "MDS-07"
+        ],
+        "ISO 42001": [
+          "A.6.2.4"
+        ]
+      },
+      "url": "/reliability/3rd-party-testing-for-hallucinations",
+      "gettingStarted": {
+        "overview": "Have third-party testers evaluate your AI for factual accuracy and hallucination rates using standard benchmarks.",
+        "steps": [
+          "Define factual domains to test (products, policies, etc.)",
+          "Create ground truth dataset for testing",
+          "Run quarterly accuracy assessments",
+          "Calculate hallucination rate metrics",
+          "Track improvement over time"
+        ],
+        "tools": [
+          {
+            "name": "TruLens",
+            "type": "oss",
+            "url": "https://trulens.org"
+          },
+          {
+            "name": "RAGAS",
+            "type": "oss",
+            "url": "https://github.com/explodinggradients/ragas"
+          },
+          {
+            "name": "Patronus AI",
+            "type": "paid",
+            "url": "https://patronus.ai"
+          }
+        ],
+        "template": {
+          "description": "Hallucination testing results",
+          "columns": [
+            "Domain",
+            "Questions Tested",
+            "Accurate",
+            "Hallucinated",
+            "Hallucination Rate",
+            "Target"
+          ],
+          "rows": [
+            [
+              "Product specs",
+              "100",
+              "92",
+              "8",
+              "8%",
+              "<5%"
+            ],
+            [
+              "Pricing",
+              "50",
+              "49",
+              "1",
+              "2%",
+              "<2%"
+            ]
+          ]
+        },
+        "tip": "Use RAGAS or TruLens for automated hallucination detection - they're free and integrate with most RAG setups."
+      }
+    },
+    {
+      "id": "D003",
+      "principle": "D",
+      "principleName": "Reliability",
+      "title": "Restrict unsafe tool calls",
+      "description": "Implement safeguards or technical controls to prevent tool calls in AI systems from executing unauthorized actions, accessing restricted information, or making decisions beyond their intended scope",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Tool Calls",
+        "Tool Selection",
+        "Technical Controls"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Function call validation and authorization",
+          "Rate limits and transaction caps",
+          "Execution monitoring and logging",
+          "Decision boundary enforcement",
+          "Pattern review and remediation"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0004",
+          "AML-M0024"
+        ],
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 6.1"
+        ],
+        "OWASP Top 10": [
+          "LLM06:25",
+          "LLM08:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "AIS-10",
+          "AIS-06",
+          "AIS-13",
+          "AIS-11",
+          "MDS-10",
+          "MDS-11",
+          "TVM-11",
+          "TVM-12"
+        ]
+      },
+      "url": "/reliability/restrict-unsafe-tool-calls",
+      "gettingStarted": {
+        "overview": "Implement controls to prevent AI agents from making unauthorized tool calls, exceeding scope, or accessing restricted data.",
+        "steps": [
+          "Define allowed tools and parameters per context",
+          "Implement tool call validation and authorization",
+          "Set rate limits and transaction caps",
+          "Log all tool calls for audit",
+          "Alert on unauthorized tool call attempts"
+        ],
+        "tools": [
+          {
+            "name": "LangChain Tools",
+            "type": "oss",
+            "url": "https://python.langchain.com"
+          },
+          {
+            "name": "Anthropic Tool Use",
+            "type": "paid",
+            "url": "https://anthropic.com"
+          },
+          {
+            "name": "Custom middleware",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "Tool call authorization matrix",
+          "columns": [
+            "Tool",
+            "Allowed Callers",
+            "Parameters Validated",
+            "Rate Limit",
+            "Requires Confirmation"
+          ],
+          "rows": [
+            [
+              "send_email",
+              "Support agents",
+              "recipient, subject",
+              "10/hour",
+              "Yes"
+            ],
+            [
+              "read_database",
+              "All users",
+              "table, user_id (own)",
+              "100/hour",
+              "No"
+            ],
+            [
+              "delete_record",
+              "Admins only",
+              "table, record_id",
+              "5/day",
+              "Yes"
+            ]
+          ]
+        },
+        "tip": "Require human confirmation for any tool call that modifies data or has external effects."
+      }
+    },
+    {
+      "id": "D004",
+      "principle": "D",
+      "principleName": "Reliability",
+      "title": "Third-party testing of tool calls",
+      "description": "Appoint expert third parties to evaluate tool calls within AI systems, specifically assessing risks including unauthorized action execution, restricted information access, or decisions exceeding intended scope",
+      "status": "Mandatory",
+      "frequency": "Every 3 months",
+      "type": "Preventative",
+      "keywords": [
+        "Tool Calls",
+        "Tool Selection",
+        "Third-Party Testing"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Qualified assessor selection",
+          "Regular testing protocol quarterly",
+          "Documentation requirements"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "GOVERN 6.1",
+          "GOVERN 4.3",
+          "MANAGE 2.2",
+          "MEASURE 1.3",
+          "MEASURE 2.1",
+          "MEASURE 2.6",
+          "MEASURE 4.1",
+          "MEASURE 4.2"
+        ],
+        "OWASP Top 10": [
+          "LLM06:25"
+        ],
+        "ISO 42001": [
+          "A.6.2.4"
+        ],
+        "CSA AICM": [
+          "AIS-05"
+        ]
+      },
+      "url": "/reliability/3rd-party-testing-of-tool-calls",
+      "gettingStarted": {
+        "overview": "Have third-party testers evaluate your AI agent's tool usage for security and reliability issues.",
+        "steps": [
+          "Document all available agent tools",
+          "Create test cases for tool misuse scenarios",
+          "Run quarterly tool call security assessments",
+          "Test for parameter injection and scope violations",
+          "Remediate and verify fixes"
+        ],
+        "tools": [
+          {
+            "name": "PromptFoo",
+            "type": "free",
+            "url": "https://promptfoo.dev"
+          },
+          {
+            "name": "Custom test harness",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Patronus AI",
+            "type": "paid",
+            "url": "https://patronus.ai"
+          }
+        ],
+        "template": {
+          "description": "Tool call security test results",
+          "columns": [
+            "Test Scenario",
+            "Tool Tested",
+            "Expected Behavior",
+            "Actual",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Access other user's data",
+              "read_database",
+              "Blocked",
+              "Blocked",
+              "Pass"
+            ],
+            [
+              "Exceed rate limit",
+              "send_email",
+              "Throttled",
+              "Throttled",
+              "Pass"
+            ],
+            [
+              "Inject SQL in parameter",
+              "read_database",
+              "Sanitized",
+              "Sanitized",
+              "Pass"
+            ]
+          ]
+        },
+        "tip": "Test tool calls with adversarial prompts trying to manipulate parameters - 'send email to attacker@evil.com'."
+      }
+    },
+    {
+      "id": "E001",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "AI failure plan for security breaches",
+      "description": "Document AI failure plan for AI privacy and security breaches assigning accountable owners and establishing notification and remediation with third-party support as needed",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Incident Response",
+        "Security",
+        "Privacy",
+        "Regulatory Deadlines"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Breach response leadership designation",
+          "Notification procedures for customers and regulators",
+          "Security remediation with system freeze capabilities",
+          "Evidence collection procedures"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 20",
+          "Article 73"
+        ],
+        "ISO 42001": [
+          "A.8.4",
+          "A.8.5"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 1.3",
+          "MANAGE 4.3"
+        ],
+        "CSA AICM": [
+          "BCR-09",
+          "BCR-10",
+          "SEF-01",
+          "SEF-02",
+          "SEF-03",
+          "SEF-04",
+          "SEF-05",
+          "SEF-06",
+          "SEF-07",
+          "SEF-08",
+          "SEF-09"
+        ]
+      },
+      "url": "/accountability/ai-failure-plan-for-security-breaches",
+      "gettingStarted": {
+        "overview": "Create an incident response playbook specifically for AI security breaches, including data exposure and prompt injection attacks.",
+        "steps": [
+          "Define AI security incident categories",
+          "Assign incident commander and response team",
+          "Document containment procedures (disable AI, rotate keys)",
+          "Define notification requirements and timelines",
+          "Create communication templates"
+        ],
+        "tools": [
+          {
+            "name": "PagerDuty",
+            "type": "free",
+            "url": "https://pagerduty.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "incident.io",
+            "type": "paid",
+            "url": "https://incident.io"
+          }
+        ],
+        "template": {
+          "description": "AI security incident response playbook",
+          "columns": [
+            "Incident Type",
+            "Severity",
+            "First Responder",
+            "Containment Action",
+            "Notification SLA"
+          ],
+          "rows": [
+            [
+              "Data exposure via AI",
+              "Critical",
+              "Security Lead",
+              "Disable AI endpoint",
+              "1 hour"
+            ],
+            [
+              "Prompt injection attack",
+              "High",
+              "Engineering Lead",
+              "Block attacker IP",
+              "4 hours"
+            ]
+          ]
+        },
+        "tip": "Keep it simple - a 2-page playbook that people actually use beats a 50-page document that sits unread."
+      }
+    },
+    {
+      "id": "E002",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "AI failure plan for harmful outputs",
+      "description": "Document a comprehensive response plan addressing harmful AI outputs causing significant customer harm, assigning accountability and establishing remediation procedures",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Incident Response",
+        "Emergency Response",
+        "Harmful Outputs",
+        "Hallucinations",
+        "Vendors"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Customer communication protocols for significant incidents",
+          "Immediate mitigation steps with system freeze capabilities"
+        ],
+        "mayInclude": [
+          "Define harmful output categories with concrete examples",
+          "Coordinate external support engagement"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 20",
+          "Article 73"
+        ],
+        "ISO 42001": [
+          "A.8.4"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 1.3",
+          "MANAGE 4.3"
+        ],
+        "CSA AICM": [
+          "BCR-09",
+          "BCR-10",
+          "SEF-09"
+        ]
+      },
+      "url": "/accountability/ai-failure-plan-for-harmful-outputs",
+      "gettingStarted": {
+        "overview": "Create an incident response playbook for when your AI produces harmful outputs that affect customers.",
+        "steps": [
+          "Define harmful output incident categories",
+          "Assign accountability for incident response",
+          "Document immediate mitigation steps",
+          "Create customer communication templates",
+          "Define escalation paths"
+        ],
+        "tools": [
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Zendesk",
+            "type": "paid",
+            "url": "https://zendesk.com"
+          },
+          {
+            "name": "Intercom",
+            "type": "paid",
+            "url": "https://intercom.com"
+          }
+        ],
+        "template": {
+          "description": "Harmful output incident playbook",
+          "columns": [
+            "Scenario",
+            "Impact Level",
+            "Owner",
+            "Immediate Action",
+            "Customer Comms"
+          ],
+          "rows": [
+            [
+              "Offensive content shown",
+              "High",
+              "Product Lead",
+              "Disable feature",
+              "Apology email"
+            ],
+            [
+              "Biased recommendation",
+              "Medium",
+              "ML Lead",
+              "Add guardrail",
+              "Individual outreach"
+            ]
+          ]
+        },
+        "tip": "Pre-write your customer communication templates so you're not crafting apologies under pressure."
+      }
+    },
+    {
+      "id": "E003",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "AI failure plan for hallucinations",
+      "description": "Document procedures addressing hallucinated AI outputs causing substantial customer financial loss, including accountability assignment and remediation processes",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Hallucinations",
+        "Incident Response",
+        "Customer Loss"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Compensation assessment procedures",
+          "Remediation measures with system adjustments"
+        ],
+        "mayInclude": [
+          "Defining hallucination incident types",
+          "Coordinating external support"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 20",
+          "Article 73"
+        ],
+        "ISO 42001": [
+          "A.8.4"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 4.3",
+          "MANAGE 1.3",
+          "MANAGE 4.3"
+        ],
+        "CSA AICM": [
+          "BCR-09",
+          "BCR-10",
+          "SEF-09"
+        ]
+      },
+      "url": "/accountability/ai-failure-plan-for-hallucinations",
+      "gettingStarted": {
+        "overview": "Create an incident response playbook for when AI hallucinations cause customer harm or financial loss.",
+        "steps": [
+          "Define hallucination incident severity levels",
+          "Document compensation assessment process",
+          "Create remediation checklist (fix, test, verify)",
+          "Define customer communication approach",
+          "Track incidents for pattern analysis"
+        ],
+        "tools": [
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Zendesk",
+            "type": "paid",
+            "url": "https://zendesk.com"
+          },
+          {
+            "name": "Jira",
+            "type": "paid",
+            "url": "https://atlassian.com/jira"
+          }
+        ],
+        "template": {
+          "description": "Hallucination incident response",
+          "columns": [
+            "Scenario",
+            "Customer Impact",
+            "Compensation Approach",
+            "Fix Priority",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "Incorrect product info",
+              "Returned purchase",
+              "Refund + credit",
+              "High",
+              "Product"
+            ],
+            [
+              "Wrong pricing quoted",
+              "Overpayment",
+              "Full refund",
+              "Critical",
+              "Finance"
+            ]
+          ]
+        },
+        "tip": "Be generous with compensation for hallucination incidents - customer trust is worth more than the refund."
+      }
+    },
+    {
+      "id": "E004",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Assign accountability",
+      "description": "Document which AI system changes across the development & deployment lifecycle require formal review or approval, assign a lead accountable for each, and document their approval with supporting evidence",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Decision Owners",
+        "Deployment"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Define AI system changes needing approval",
+          "Assign accountable leads as approvers",
+          "Follow RACI structure for roles"
+        ],
+        "mayInclude": [
+          "Implement code signing and verification processes"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0013"
+        ],
+        "EU AI Act": [
+          "Article 17",
+          "Article 18"
+        ],
+        "ISO 42001": [
+          "A.3.2",
+          "A.4.6",
+          "A.6.2.2",
+          "A.10.2",
+          "5.1",
+          "5.3",
+          "7.2"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 2.1",
+          "GOVERN 2.3",
+          "MAP 3.5",
+          "MEASURE 2.8"
+        ],
+        "CSA AICM": [
+          "AIS-01",
+          "AIS-04",
+          "CCC-01",
+          "CCC-03",
+          "CCC-05",
+          "CEK-02",
+          "GRC-06",
+          "MDS-09"
+        ]
+      },
+      "url": "/accountability/assign-accountability",
+      "gettingStarted": {
+        "overview": "Define which AI system changes require formal approval and assign accountable owners for each type of change.",
+        "steps": [
+          "List AI system change types (model, prompt, tools, data)",
+          "Assign approval authority for each change type",
+          "Create simple approval workflow",
+          "Document approvals with rationale",
+          "Review accountability assignments annually"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "type": "free",
+            "url": "https://sheets.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Jira",
+            "type": "paid",
+            "url": "https://atlassian.com/jira"
+          }
+        ],
+        "template": {
+          "description": "AI change approval matrix (RACI)",
+          "columns": [
+            "Change Type",
+            "Responsible",
+            "Accountable",
+            "Consulted",
+            "Informed"
+          ],
+          "rows": [
+            [
+              "Model version change",
+              "ML Engineer",
+              "ML Lead",
+              "Security",
+              "Product"
+            ],
+            [
+              "System prompt change",
+              "Product",
+              "Product Lead",
+              "ML, Legal",
+              "Engineering"
+            ],
+            [
+              "New tool/API added",
+              "Engineering",
+              "Engineering Lead",
+              "Security, ML",
+              "Product"
+            ]
+          ]
+        },
+        "tip": "Keep approvals lightweight for low-risk changes - you want velocity, not bureaucracy."
+      }
+    },
+    {
+      "id": "E005",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Assess cloud vs on-prem processing",
+      "description": "Establish criteria for selecting cloud provider, and circumstances for on-premises processing considering data sensitivity, regulatory requirements, security controls, and operational needs",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Deployment",
+        "Cloud Security",
+        "On-Premise Security",
+        "Data Residency"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Conducting deployment risk assessments",
+          "Documenting decision criteria and rationale",
+          "Implementing deployment-appropriate security controls"
+        ],
+        "mayInclude": [
+          "Implementing hybrid deployment strategies",
+          "Establishing cloud vendor management procedures",
+          "Reviewing deployment decisions when requirements change"
+        ]
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0017"
+        ],
+        "NIST AI RMF": [
+          "MAP 4.2"
+        ],
+        "OWASP Top 10": [
+          "LLM03:25"
+        ],
+        "CSA AICM": [
+          "DCS-01 to DCS-15",
+          "AIS-05"
+        ]
+      },
+      "url": "/accountability/assess-cloud-vs-on-prem-processing",
+      "gettingStarted": {
+        "overview": "Document your criteria for choosing between cloud AI services and on-premise deployment based on data sensitivity and compliance needs.",
+        "steps": [
+          "List your AI use cases and data types",
+          "Assess data sensitivity for each use case",
+          "Evaluate cloud provider security and compliance",
+          "Document decision criteria and rationale",
+          "Review decisions when requirements change"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "type": "free",
+            "url": "https://sheets.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Lucidchart",
+            "type": "free",
+            "url": "https://lucidchart.com"
+          }
+        ],
+        "template": {
+          "description": "Cloud vs on-prem decision matrix",
+          "columns": [
+            "Use Case",
+            "Data Sensitivity",
+            "Compliance Req",
+            "Deployment",
+            "Rationale"
+          ],
+          "rows": [
+            [
+              "Customer support chat",
+              "Medium",
+              "SOC2",
+              "Azure OpenAI",
+              "Enterprise BAA"
+            ],
+            [
+              "Code review",
+              "High (IP)",
+              "None",
+              "Self-hosted Llama",
+              "IP protection"
+            ]
+          ]
+        },
+        "tip": "Most mid-market companies should default to enterprise cloud AI (Azure, AWS) - on-prem is rarely worth the overhead."
+      }
+    },
+    {
+      "id": "E006",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Conduct vendor due diligence",
+      "description": "Establish AI vendor due diligence processes for foundation and upstream model providers covering data handling, PII controls, security and compliance",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Vendor Due Diligence",
+        "Open-Source",
+        "Foundation Models",
+        "Upstream Models"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining assessment criteria for AI models",
+          "Conducting documented assessments with scoring",
+          "Maintaining assessment records"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 23",
+          "Article 24"
+        ],
+        "ISO 42001": [
+          "A.10.3"
+        ],
+        "NIST AI RMF": [
+          "MAP 4.2"
+        ],
+        "OWASP Top 10": [
+          "LLM03:25"
+        ],
+        "CSA AICM": [
+          "STA-01",
+          "STA-08",
+          "STA-09",
+          "STA-10",
+          "STA-11",
+          "STA-12",
+          "STA-13",
+          "STA-14",
+          "STA-15"
+        ]
+      },
+      "url": "/accountability/conduct-vendor-due-diligence",
+      "gettingStarted": {
+        "overview": "Create a due diligence process for evaluating AI vendors and foundation model providers before adoption.",
+        "steps": [
+          "Define evaluation criteria (security, privacy, compliance)",
+          "Create vendor questionnaire template",
+          "Review provider documentation and certifications",
+          "Document assessment findings and approval",
+          "Schedule annual vendor re-assessment"
+        ],
+        "tools": [
+          {
+            "name": "Google Forms",
+            "type": "free",
+            "url": "https://forms.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Vanta",
+            "type": "paid",
+            "url": "https://vanta.com"
+          }
+        ],
+        "template": {
+          "description": "AI vendor assessment scorecard",
+          "columns": [
+            "Criteria",
+            "Weight",
+            "OpenAI",
+            "Anthropic",
+            "Azure",
+            "AWS Bedrock"
+          ],
+          "rows": [
+            [
+              "SOC2 certified",
+              "20%",
+              "Yes",
+              "Yes",
+              "Yes",
+              "Yes"
+            ],
+            [
+              "Data not used for training",
+              "25%",
+              "API only",
+              "Yes",
+              "Yes",
+              "Yes"
+            ],
+            [
+              "Enterprise BAA available",
+              "20%",
+              "Yes",
+              "Yes",
+              "Yes",
+              "Yes"
+            ],
+            [
+              "HIPAA compliant option",
+              "15%",
+              "Yes",
+              "No",
+              "Yes",
+              "Yes"
+            ]
+          ]
+        },
+        "tip": "Focus on data handling policies first - whether your data is used for training is the biggest decision point."
+      }
+    },
+    {
+      "id": "E007",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Document system change approvals",
+      "description": "Define approval processes for material changes to AI systems (model versions, access controls, data sources) requiring formal review and sign-off",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Detective",
+      "keywords": [
+        "Approvals",
+        "Workflows"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Documenting formal review and approval decisions",
+          "Documenting approval workflow with sufficient detail"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 17",
+          "Article 18"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 2.1",
+          "GOVERN 2.3",
+          "MANAGE 1.1",
+          "MAP 3.5",
+          "MEASURE 2.8",
+          "MEASURE 4.3"
+        ],
+        "ISO 42001": [
+          "A.6.2.2",
+          "A.6.2.4",
+          "6.3"
+        ],
+        "CSA AICM": [
+          "CCC-01",
+          "CCC-03",
+          "CCC-04",
+          "CCC-05",
+          "CCC-06",
+          "AIS-01"
+        ]
+      },
+      "url": "/accountability/document-system-change-approvals",
+      "gettingStarted": {
+        "overview": "Document all material changes to your AI system with approval records for audit purposes.",
+        "steps": [
+          "Define what constitutes a 'material change'",
+          "Create change request template",
+          "Implement approval workflow",
+          "Archive change records with timestamps",
+          "Review change log quarterly"
+        ],
+        "tools": [
+          {
+            "name": "GitHub PRs",
+            "type": "free",
+            "url": "https://github.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Jira",
+            "type": "paid",
+            "url": "https://atlassian.com/jira"
+          }
+        ],
+        "template": {
+          "description": "AI system change log",
+          "columns": [
+            "Date",
+            "Change Type",
+            "Description",
+            "Approved By",
+            "Evidence Link"
+          ],
+          "rows": [
+            [
+              "2024-01-15",
+              "Model update",
+              "GPT-4 to GPT-4 Turbo",
+              "J. Smith",
+              "PR #234"
+            ],
+            [
+              "2024-01-20",
+              "Prompt change",
+              "Added safety guardrail",
+              "M. Jones",
+              "PR #241"
+            ]
+          ]
+        },
+        "tip": "Use your existing code review process (PRs) for prompt and config changes - no need for separate tooling."
+      }
+    },
+    {
+      "id": "E008",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Review internal processes",
+      "description": "Establish regular internal reviews of key processes and document review records and approvals",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Internal Reviews",
+        "Documentation"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Quarterly reviews of decision processes",
+          "Centralized repository for decision records",
+          "Documentation and tracking of remediation efforts"
+        ],
+        "mayInclude": [
+          "Collection and implementation of external feedback"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 43"
+        ],
+        "ISO 42001": [
+          "A.3.3",
+          "A.2.3",
+          "A.2.4",
+          "6.3",
+          "7.5.2",
+          "9.2.1",
+          "9.2.2",
+          "9.3.1",
+          "9.3.2",
+          "9.3.3"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.7",
+          "GOVERN 5.2",
+          "GOVERN 5.1",
+          "MANAGE 4.2",
+          "MEASURE 1.2",
+          "MEASURE 2.13"
+        ],
+        "CSA AICM": [
+          "A&A-02",
+          "A&A-03",
+          "A&A-05",
+          "A&A-06",
+          "GRC-03",
+          "IAM-03",
+          "IAM-08",
+          "LOG-07"
+        ]
+      },
+      "url": "/accountability/review-internal-processes",
+      "gettingStarted": {
+        "overview": "Conduct regular internal reviews of your AI governance processes to ensure they're working effectively.",
+        "steps": [
+          "Schedule quarterly governance reviews",
+          "Review change logs, incidents, and test results",
+          "Identify process gaps or inefficiencies",
+          "Document findings and action items",
+          "Track remediation to completion"
+        ],
+        "tools": [
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Google Docs",
+            "type": "free",
+            "url": "https://docs.google.com"
+          },
+          {
+            "name": "Confluence",
+            "type": "paid",
+            "url": "https://atlassian.com/confluence"
+          }
+        ],
+        "template": {
+          "description": "Quarterly AI governance review agenda",
+          "columns": [
+            "Review Area",
+            "Questions to Answer",
+            "Data Source",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "Change management",
+              "Were all changes approved?",
+              "Change log",
+              "Engineering"
+            ],
+            [
+              "Incident response",
+              "How many incidents? Resolution time?",
+              "Incident log",
+              "Security"
+            ],
+            [
+              "Testing",
+              "Were quarterly tests completed?",
+              "Test results",
+              "QA"
+            ]
+          ]
+        },
+        "tip": "Keep reviews focused and time-boxed - 1 hour quarterly is better than 4-hour annual reviews."
+      }
+    },
+    {
+      "id": "E009",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Monitor third-party access",
+      "description": "Implement systems to monitor third party access",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Access",
+        "Logins",
+        "Application"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining third-party interaction scope with logging",
+          "Capturing access metadata"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0024"
+        ],
+        "EU AI Act": [
+          "Article 72"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.5",
+          "MANAGE 4.1"
+        ],
+        "OWASP Top 10": [
+          "LLM03:25",
+          "LLM05:25",
+          "LLM06:25",
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "AIS-10",
+          "LOG-05",
+          "UEM-14",
+          "TVM-05"
+        ]
+      },
+      "url": "/accountability/monitor-3rd-party-access",
+      "gettingStarted": {
+        "overview": "Monitor and log access to your AI systems by third parties like vendors, consultants, or integration partners.",
+        "steps": [
+          "Identify all third-party AI system access points",
+          "Implement access logging with identity tracking",
+          "Set up alerts for unusual access patterns",
+          "Review third-party access quarterly",
+          "Revoke access when relationships end"
+        ],
+        "tools": [
+          {
+            "name": "AWS CloudTrail",
+            "type": "paid",
+            "url": "https://aws.amazon.com/cloudtrail"
+          },
+          {
+            "name": "Datadog",
+            "type": "paid",
+            "url": "https://datadoghq.com"
+          },
+          {
+            "name": "Custom logging",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "Third-party access inventory",
+          "columns": [
+            "Third Party",
+            "Access Type",
+            "Purpose",
+            "Expiration",
+            "Last Review"
+          ],
+          "rows": [
+            [
+              "Integration vendor",
+              "API read",
+              "Data sync",
+              "2024-12-31",
+              "2024-01"
+            ],
+            [
+              "ML consultant",
+              "Full admin",
+              "Model tuning",
+              "2024-03-31",
+              "2024-01"
+            ]
+          ]
+        },
+        "tip": "Set expiration dates on all third-party access - it forces regular reviews."
+      }
+    },
+    {
+      "id": "E010",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Establish AI acceptable use policy",
+      "description": "Establish and implement a policy that defines prohibited AI usage, implements detection/monitoring tools, and provides user feedback when violations occur",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Acceptable Use",
+        "Breach"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining prohibited AI usage",
+          "Implementing detection systems",
+          "User alerts when inputs violate policy"
+        ],
+        "mayInclude": [
+          "Real-time monitoring and blocking capabilities",
+          "Logging and incident tracking systems",
+          "Quarterly effectiveness reviews"
+        ]
+      },
+      "frameworkMappings": {
+        "ISO 42001": [
+          "A.2.2",
+          "A.9.2",
+          "A.9.4",
+          "A.2.4",
+          "A.9.3",
+          "4.1",
+          "4.3",
+          "5.2"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.2",
+          "MAP 1.6",
+          "MAP 3.3",
+          "MAP 3.4",
+          "MEASURE 2.4"
+        ],
+        "OWASP Top 10": [
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "GRC-09"
+        ]
+      },
+      "url": "/accountability/establish-ai-acceptable-use-policy",
+      "gettingStarted": {
+        "overview": "Create and enforce an acceptable use policy defining what users can and cannot do with your AI system.",
+        "steps": [
+          "Define prohibited uses (jailbreaking, abuse, illegal)",
+          "Document in user-facing terms of service",
+          "Implement detection for policy violations",
+          "Create response procedures for violations",
+          "Communicate policy to all users"
+        ],
+        "tools": [
+          {
+            "name": "Termly",
+            "type": "free",
+            "url": "https://termly.io"
+          },
+          {
+            "name": "Google Docs",
+            "type": "free",
+            "url": "https://docs.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          }
+        ],
+        "template": {
+          "description": "AI acceptable use policy outline",
+          "columns": [
+            "Policy Area",
+            "Prohibited Actions",
+            "Detection Method",
+            "Consequence"
+          ],
+          "rows": [
+            [
+              "Jailbreaking",
+              "Attempting to bypass safety",
+              "Pattern detection",
+              "Warning, then suspension"
+            ],
+            [
+              "Illegal content",
+              "Generating illegal material",
+              "Content filter",
+              "Immediate termination"
+            ],
+            [
+              "Abuse",
+              "Harassment via AI",
+              "User reports",
+              "Investigation, suspension"
+            ]
+          ]
+        },
+        "tip": "Make the policy readable - legalese nobody understands doesn't change behavior."
+      }
+    },
+    {
+      "id": "E011",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Record processing locations",
+      "description": "Document AI data processing locations",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Data Processing",
+        "Storage Location",
+        "Data Protections"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Maintaining AI infrastructure location documentation",
+          "Reviewing and updating documentation regularly"
+        ],
+        "mayInclude": [
+          "Implementing transfer compliance procedures"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 11"
+        ],
+        "ISO 42001": [
+          "A.7.5"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.6"
+        ],
+        "CSA AICM": [
+          "DSP-13",
+          "DSP-19",
+          "UEM-04"
+        ]
+      },
+      "url": "/accountability/record-processing-locations",
+      "gettingStarted": {
+        "overview": "Document where your AI processes and stores data, including cloud regions and any data residency requirements.",
+        "steps": [
+          "Map all AI data flows (input, processing, storage)",
+          "Document geographic locations for each",
+          "Identify data residency requirements by customer/region",
+          "Verify compliance with documented locations",
+          "Update documentation when infrastructure changes"
+        ],
+        "tools": [
+          {
+            "name": "Lucidchart",
+            "type": "free",
+            "url": "https://lucidchart.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "draw.io",
+            "type": "free",
+            "url": "https://draw.io"
+          }
+        ],
+        "template": {
+          "description": "AI data processing locations",
+          "columns": [
+            "Data Type",
+            "Processing Location",
+            "Storage Location",
+            "Provider",
+            "Residency OK?"
+          ],
+          "rows": [
+            [
+              "User prompts",
+              "US-East",
+              "US-East",
+              "Azure OpenAI",
+              "Yes (US customers)"
+            ],
+            [
+              "Embeddings",
+              "US-West",
+              "US-West",
+              "Pinecone",
+              "Yes (US customers)"
+            ]
+          ]
+        },
+        "tip": "For EU customers, use Azure OpenAI or AWS Bedrock with EU regions to simplify GDPR compliance."
+      }
+    },
+    {
+      "id": "E012",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Document regulatory compliance",
+      "description": "Document applicable AI laws and standards, required data protections, and strategies for compliance",
+      "status": "Mandatory",
+      "frequency": "Every 6 months",
+      "type": "Preventative",
+      "keywords": [
+        "Regulatory",
+        "EU",
+        "NY",
+        "NIST",
+        "ISO",
+        "GDPR"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Identifying relevant regulations",
+          "Documenting compliance procedures and strategies",
+          "Reviewing the repository regularly"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 16",
+          "Article 18",
+          "Article 21",
+          "Article 22",
+          "Article 25",
+          "Article 26",
+          "Article 43",
+          "Article 44",
+          "Article 47",
+          "Article 48",
+          "Article 49"
+        ],
+        "ISO 42001": [
+          "A.2.3",
+          "A.8.5",
+          "10.2"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.1",
+          "GOVERN 1.7",
+          "MAP 1.1",
+          "MAP 4.1"
+        ],
+        "CSA AICM": [
+          "A&A-04",
+          "DSP-10",
+          "DSP-18",
+          "GRC-07",
+          "HRS-10"
+        ]
+      },
+      "url": "/accountability/document-regulatory-compliance",
+      "gettingStarted": {
+        "overview": "Document which AI regulations apply to your business and your compliance strategy for each.",
+        "steps": [
+          "Identify applicable AI regulations (EU AI Act, state laws)",
+          "Assess applicability based on use cases and geography",
+          "Document compliance approach for each requirement",
+          "Assign ownership for compliance activities",
+          "Review regulatory landscape every 6 months"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "type": "free",
+            "url": "https://sheets.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "OneTrust",
+            "type": "paid",
+            "url": "https://onetrust.com"
+          }
+        ],
+        "template": {
+          "description": "AI regulatory compliance tracker",
+          "columns": [
+            "Regulation",
+            "Applies?",
+            "Use Cases Affected",
+            "Compliance Status",
+            "Owner"
+          ],
+          "rows": [
+            [
+              "EU AI Act",
+              "Yes (EU customers)",
+              "Customer support AI",
+              "In progress",
+              "Legal"
+            ],
+            [
+              "Colorado AI Act",
+              "No",
+              "N/A",
+              "N/A",
+              "N/A"
+            ],
+            [
+              "GDPR (AI aspects)",
+              "Yes",
+              "All AI features",
+              "Compliant",
+              "Legal"
+            ]
+          ]
+        },
+        "tip": "Don't try to comply with everything at once - prioritize by customer geography and enforcement timelines."
+      }
+    },
+    {
+      "id": "E013",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Implement quality management system",
+      "description": "Establish a quality management system for AI systems proportionate to the size of the organization",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "EU",
+        "Quality management",
+        "Regulatory"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Documenting strategy for compliance with conformity assessment procedures",
+          "Documenting design, design control, and design verification techniques",
+          "Documenting development, quality control, and quality assurance procedures",
+          "Documenting communication handling with authorities",
+          "Documenting resource management",
+          "Assigning organizational accountability for QMS aspects"
+        ],
+        "mayInclude": [
+          "Collecting comprehensive documentation for EU AI Act Article 17 requirements"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 9",
+          "Article 10",
+          "Article 11",
+          "Article 12",
+          "Article 16",
+          "Article 17",
+          "Article 18",
+          "Article 19",
+          "Article 26",
+          "Article 43",
+          "Article 72",
+          "Article 73"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.4",
+          "GOVERN 1.3"
+        ],
+        "ISO 42001": [
+          "A.5.2",
+          "A.6.2.7",
+          "A.5.3",
+          "A.5.4",
+          "A.4.2",
+          "4.4",
+          "6.1.4",
+          "7.1"
+        ],
+        "CSA AICM": [
+          "AIS-01",
+          "AIS-03",
+          "BCR-02",
+          "GRC-02",
+          "GRC-10",
+          "MDS-02"
+        ]
+      },
+      "url": "/accountability/implement-quality-management-system",
+      "gettingStarted": {
+        "overview": "Establish a quality management system for your AI to ensure consistent development, testing, and monitoring practices.",
+        "steps": [
+          "Document your AI development lifecycle",
+          "Define quality gates (testing, review, approval)",
+          "Create templates for design and testing docs",
+          "Implement tracking for quality metrics",
+          "Review QMS effectiveness annually"
+        ],
+        "tools": [
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Confluence",
+            "type": "paid",
+            "url": "https://atlassian.com/confluence"
+          },
+          {
+            "name": "Jira",
+            "type": "paid",
+            "url": "https://atlassian.com/jira"
+          }
+        ],
+        "template": {
+          "description": "AI quality gates checklist",
+          "columns": [
+            "Phase",
+            "Gate",
+            "Required Artifacts",
+            "Approver"
+          ],
+          "rows": [
+            [
+              "Design",
+              "Design review",
+              "System design doc",
+              "Tech Lead"
+            ],
+            [
+              "Development",
+              "Code review",
+              "PR with tests",
+              "Peer + Lead"
+            ],
+            [
+              "Pre-deployment",
+              "Safety testing",
+              "Test results report",
+              "QA Lead"
+            ],
+            [
+              "Deployment",
+              "Go/no-go",
+              "Approval checklist",
+              "Product Owner"
+            ]
+          ]
+        },
+        "tip": "Start lightweight - a simple checklist is a QMS. You can formalize later if you need ISO certification."
+      }
+    },
+    {
+      "id": "E014",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Share transparency reports",
+      "description": "Establish policies for sharing transparency reports with relevant stakeholders including regulators and customers",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Transparency"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Defining report scope and recipient categories",
+          "Excluding or sanitizing sensitive information"
+        ],
+        "mayInclude": [
+          "Implementing secure delivery methods",
+          "Documenting sharing procedures"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 11"
+        ],
+        "ISO 42001": [
+          "A.6.2.7",
+          "A.8.2",
+          "A.8.5",
+          "7.4"
+        ],
+        "NIST AI RMF": [
+          "MANAGE 4.2",
+          "MANAGE 4.3",
+          "MAP 1.6",
+          "MAP 5.2",
+          "MEASURE 2.8",
+          "MEASURE 2.9",
+          "MEASURE 4.2"
+        ],
+        "CSA AICM": [
+          "GRC-14",
+          "TVM-09",
+          "TVM-10",
+          "A&A-06",
+          "LOG-13",
+          "LOG-10",
+          "SEF-05",
+          "SEF-07"
+        ]
+      },
+      "url": "/accountability/share-transparency-reports",
+      "gettingStarted": {
+        "overview": "Create and share transparency reports about your AI system's performance, incidents, and improvements.",
+        "steps": [
+          "Define transparency report contents and audience",
+          "Establish reporting frequency (quarterly/annual)",
+          "Collect metrics on safety, reliability, usage",
+          "Sanitize sensitive information before sharing",
+          "Publish reports to appropriate stakeholders"
+        ],
+        "tools": [
+          {
+            "name": "Google Docs",
+            "type": "free",
+            "url": "https://docs.google.com"
+          },
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "Mode Analytics",
+            "type": "paid",
+            "url": "https://mode.com"
+          }
+        ],
+        "template": {
+          "description": "Quarterly AI transparency report outline",
+          "columns": [
+            "Section",
+            "Metrics Included",
+            "Audience",
+            "Sensitivity"
+          ],
+          "rows": [
+            [
+              "Usage overview",
+              "Active users, queries/day",
+              "All stakeholders",
+              "Low"
+            ],
+            [
+              "Safety metrics",
+              "Blocked harmful outputs",
+              "Internal only",
+              "Medium"
+            ],
+            [
+              "Incidents",
+              "Count, severity, resolution",
+              "Regulators if required",
+              "High"
+            ]
+          ]
+        },
+        "tip": "Start internal-only - you can expand to customer-facing reports as you get comfortable with the metrics."
+      }
+    },
+    {
+      "id": "E015",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Log model activity",
+      "description": "Maintain logs of AI system processes, actions, and model outputs where permitted to support incident investigation, auditing, and explanation of AI system behavior",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Detective",
+      "keywords": [
+        "Explainability",
+        "Logs"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Capturing system activity details",
+          "Implementing log storage with appropriate retention"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0024"
+        ],
+        "EU AI Act": [
+          "Article 12",
+          "Article 19"
+        ],
+        "ISO 42001": [
+          "A.6.2.8"
+        ],
+        "NIST AI RMF": [
+          "MEASURE 2.4",
+          "MEASURE 2.8"
+        ],
+        "OWASP Top 10": [
+          "LLM10:25"
+        ],
+        "CSA AICM": [
+          "LOG-01",
+          "LOG-03",
+          "LOG-04",
+          "LOG-05",
+          "LOG-06",
+          "LOG-07",
+          "LOG-08",
+          "LOG-09",
+          "LOG-10",
+          "LOG-11",
+          "LOG-12",
+          "LOG-13",
+          "LOG-14",
+          "LOG-15",
+          "MDS-10",
+          "SEF-05",
+          "SEF-07"
+        ]
+      },
+      "url": "/accountability/log-model-activity",
+      "gettingStarted": {
+        "overview": "Implement comprehensive logging of AI system inputs, outputs, and actions to support auditing and incident investigation.",
+        "steps": [
+          "Define what to log (prompts, responses, tool calls)",
+          "Implement structured logging with timestamps",
+          "Set up secure log storage with retention policy",
+          "Create log query tools for investigations",
+          "Review log coverage and usefulness quarterly"
+        ],
+        "tools": [
+          {
+            "name": "Langfuse",
+            "type": "oss",
+            "url": "https://langfuse.com"
+          },
+          {
+            "name": "LangSmith",
+            "type": "free",
+            "url": "https://smith.langchain.com"
+          },
+          {
+            "name": "Datadog",
+            "type": "paid",
+            "url": "https://datadoghq.com"
+          }
+        ],
+        "template": {
+          "description": "AI activity logging requirements",
+          "columns": [
+            "Event Type",
+            "Fields Logged",
+            "Retention",
+            "Access Level"
+          ],
+          "rows": [
+            [
+              "User prompt",
+              "timestamp, user_id, prompt_hash, session_id",
+              "90 days",
+              "Support+"
+            ],
+            [
+              "Model response",
+              "timestamp, response_hash, latency, tokens",
+              "90 days",
+              "Support+"
+            ],
+            [
+              "Tool call",
+              "timestamp, tool, parameters, result, user_id",
+              "1 year",
+              "Admin only"
+            ]
+          ]
+        },
+        "tip": "Log prompt/response hashes rather than full text for privacy - you can retrieve full content when needed for investigations."
+      }
+    },
+    {
+      "id": "E016",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Implement AI disclosure mechanisms",
+      "description": "Implement clear disclosure mechanisms to inform users when they are interacting with AI systems rather than human operators",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Labelling",
+        "Transparency"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Clear AI interaction disclosure at communication start",
+          "Conspicuous, easily understood disclosures",
+          "Maintained disclosure visibility throughout interactions",
+          "Machine-readable labeling of AI-generated content",
+          "User notification regarding emotion recognition or biometric categorization"
+        ],
+        "mayInclude": [
+          "Adaptive disclosure methods tailored to interaction type",
+          "Reactive disclosure capabilities"
+        ]
+      },
+      "frameworkMappings": {
+        "EU AI Act": [
+          "Article 13",
+          "Article 50"
+        ],
+        "ISO 42001": [
+          "A.8.2"
+        ],
+        "NIST AI RMF": [
+          "MAP 2.2",
+          "MAP 3.4",
+          "MEASURE 2.8"
+        ],
+        "CSA AICM": [
+          "GRC-15"
+        ]
+      },
+      "url": "/accountability/implement-ai-disclosure-mechanisms",
+      "gettingStarted": {
+        "overview": "Clearly inform users when they're interacting with an AI system rather than a human.",
+        "steps": [
+          "Identify all AI-powered user touchpoints",
+          "Design clear AI disclosure messaging",
+          "Implement disclosures in UI/UX",
+          "Add machine-readable labels to AI content",
+          "Test user understanding of disclosures"
+        ],
+        "tools": [
+          {
+            "name": "Custom UI",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Content Credentials",
+            "type": "oss",
+            "url": "https://contentcredentials.org"
+          },
+          {
+            "name": "C2PA",
+            "type": "oss",
+            "url": "https://c2pa.org"
+          }
+        ],
+        "template": {
+          "description": "AI disclosure implementation checklist",
+          "columns": [
+            "Touchpoint",
+            "Disclosure Type",
+            "Placement",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Chat interface",
+              "Text banner",
+              "Top of chat window",
+              "Done"
+            ],
+            [
+              "Email responses",
+              "Footer note",
+              "Email signature",
+              "Done"
+            ],
+            [
+              "Generated content",
+              "Metadata label",
+              "C2PA manifest",
+              "Planned"
+            ]
+          ]
+        },
+        "tip": "Make disclosures visible but not intrusive - 'Powered by AI' near the interface is usually sufficient."
+      }
+    },
+    {
+      "id": "E017",
+      "principle": "E",
+      "principleName": "Accountability",
+      "title": "Document system transparency policy",
+      "description": "Establish a system transparency policy and maintain a repository of model cards, datasheets, and interpretability reports for major systems",
+      "status": "Optional",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Transparency",
+        "System Cards"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Transparency policy defining documentation requirements",
+          "Centralized repository with access controls",
+          "Documentation updates when systems are modified"
+        ],
+        "mayInclude": []
+      },
+      "frameworkMappings": {
+        "MITRE ATLAS": [
+          "AML-M0023",
+          "AML-M0025"
+        ],
+        "EU AI Act": [
+          "Article 11"
+        ],
+        "ISO 42001": [
+          "A.4.2",
+          "A.4.3",
+          "A.4.4",
+          "A.4.5",
+          "A.6.2.3",
+          "A.2.2",
+          "A.2.4",
+          "4.3",
+          "5.2"
+        ],
+        "NIST AI RMF": [
+          "GOVERN 1.2",
+          "GOVERN 1.6",
+          "MAP 1.6",
+          "MEASURE 2.8",
+          "MEASURE 2.9",
+          "MEASURE 4.3"
+        ],
+        "CSA AICM": [
+          "GRC-13",
+          "GRC-14",
+          "MDS-03",
+          "MDS-04",
+          "MDS-05",
+          "STA-16",
+          "DSP-20"
+        ]
+      },
+      "url": "/accountability/document-system-transparency-policy",
+      "gettingStarted": {
+        "overview": "Maintain documentation about your AI systems including model cards, datasheets, and capability descriptions.",
+        "steps": [
+          "Create model card template for your AI systems",
+          "Document training data sources and limitations",
+          "Describe intended uses and known limitations",
+          "Store docs in centralized, access-controlled repo",
+          "Update documentation with each major change"
+        ],
+        "tools": [
+          {
+            "name": "Notion",
+            "type": "free",
+            "url": "https://notion.so"
+          },
+          {
+            "name": "GitHub",
+            "type": "free",
+            "url": "https://github.com"
+          },
+          {
+            "name": "Confluence",
+            "type": "paid",
+            "url": "https://atlassian.com/confluence"
+          }
+        ],
+        "template": {
+          "description": "AI system model card template",
+          "columns": [
+            "Section",
+            "Content",
+            "Update Frequency"
+          ],
+          "rows": [
+            [
+              "Model overview",
+              "Name, version, provider, purpose",
+              "Each version"
+            ],
+            [
+              "Intended use",
+              "Target users, use cases, limitations",
+              "Each version"
+            ],
+            [
+              "Training data",
+              "Sources, biases, date ranges",
+              "Each version"
+            ],
+            [
+              "Performance",
+              "Benchmarks, known failure modes",
+              "Quarterly"
+            ]
+          ]
+        },
+        "tip": "Use a simple template - a one-page model card is better than no documentation."
+      }
+    },
+    {
+      "id": "F001",
+      "principle": "F",
+      "principleName": "Society",
+      "title": "Prevent AI cyber misuse",
+      "description": "Implement or document guardrails to prevent AI-enabled misuse for cyber attacks and exploitation",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Preventative",
+      "keywords": [
+        "Cyber Attacks"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Results of testing from foundation model developer on offensive cyber capabilities and mitigations",
+          "Attestation the mitigations have not been removed"
+        ],
+        "mayInclude": [
+          "Malicious use detection and blocking via content filtering",
+          "Usage monitoring and threat intelligence"
+        ]
+      },
+      "frameworkMappings": {
+        "NIST AI RMF": [
+          "MEASURE 2.7"
+        ],
+        "ISO 42001": [
+          "A.5.5"
+        ],
+        "CSA AICM": [
+          "GRC-02",
+          "GRC-09",
+          "GRC-10",
+          "GRC-12",
+          "TVM-11"
+        ]
+      },
+      "url": "/society/prevent-ai-cyber-misuse",
+      "gettingStarted": {
+        "overview": "Verify your AI provider has safeguards against cyber attack assistance and document that those protections remain in place.",
+        "steps": [
+          "Review provider's offensive cyber capability testing",
+          "Verify default safety settings are enabled",
+          "Document provider attestation of mitigations",
+          "Implement additional content filtering if needed",
+          "Monitor for cyber-related misuse attempts"
+        ],
+        "tools": [
+          {
+            "name": "Provider documentation",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          },
+          {
+            "name": "Custom keyword filters",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "Cyber misuse prevention checklist",
+          "columns": [
+            "Control",
+            "Provider Covers?",
+            "Additional Control Needed?",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Malware generation",
+              "Yes",
+              "No",
+              "Verified"
+            ],
+            [
+              "Exploit development",
+              "Partial",
+              "Keyword filter",
+              "Implemented"
+            ],
+            [
+              "Attack planning",
+              "Yes",
+              "No",
+              "Verified"
+            ]
+          ]
+        },
+        "tip": "Most major providers (OpenAI, Anthropic, Google) have strong cyber safety - document their attestations."
+      }
+    },
+    {
+      "id": "F002",
+      "principle": "F",
+      "principleName": "Society",
+      "title": "Prevent catastrophic misuse",
+      "description": "Implement or document guardrails to prevent AI-enabled catastrophic system misuse involving chemical, biological, radiological, or nuclear (CBRN) weapons development or mass harm scenarios",
+      "status": "Mandatory",
+      "frequency": "Every 12 months",
+      "type": "Detective",
+      "keywords": [
+        "CBRN",
+        "Chemical",
+        "Bioweapon",
+        "Radioactive",
+        "Nuclear"
+      ],
+      "controlActivities": {
+        "shouldInclude": [
+          "Results of testing from foundation model developer on CBRN capabilities and mitigations",
+          "Attestation confirming mitigations remain intact"
+        ],
+        "mayInclude": [
+          "Relevant evaluations like CAIS Weapons of Mass Destruction proxy benchmark",
+          "Catastrophic misuse monitoring systems"
+        ]
+      },
+      "frameworkMappings": {
+        "ISO 42001": [
+          "A.5.5"
+        ],
+        "CSA AICM": [
+          "GRC-02",
+          "GRC-09",
+          "GRC-10",
+          "GRC-12",
+          "TVM-11"
+        ]
+      },
+      "url": "/society/prevent-catastrophic-misuse",
+      "gettingStarted": {
+        "overview": "Verify your AI provider has safeguards against CBRN (chemical, biological, radiological, nuclear) misuse and document those protections.",
+        "steps": [
+          "Review provider's CBRN capability testing results",
+          "Verify default safety settings block CBRN content",
+          "Document provider attestation of mitigations",
+          "Consider additional filtering for high-risk domains",
+          "Monitor for CBRN-related query patterns"
+        ],
+        "tools": [
+          {
+            "name": "Provider documentation",
+            "type": "free",
+            "url": ""
+          },
+          {
+            "name": "Guardrails AI",
+            "type": "oss",
+            "url": "https://guardrailsai.com"
+          },
+          {
+            "name": "Custom keyword filters",
+            "type": "free",
+            "url": ""
+          }
+        ],
+        "template": {
+          "description": "CBRN misuse prevention checklist",
+          "columns": [
+            "Category",
+            "Provider Tested?",
+            "Mitigations in Place?",
+            "Documentation"
+          ],
+          "rows": [
+            [
+              "Chemical weapons",
+              "Yes",
+              "Yes",
+              "Provider safety report"
+            ],
+            [
+              "Biological agents",
+              "Yes",
+              "Yes",
+              "Provider safety report"
+            ],
+            [
+              "Nuclear/radiological",
+              "Yes",
+              "Yes",
+              "Provider safety report"
+            ]
+          ]
+        },
+        "tip": "For most mid-market companies, relying on provider safeguards is sufficient - just document the attestation."
+      }
+    }
+  ]
+}
