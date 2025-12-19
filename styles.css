@@ -858,6 +858,25 @@ body {
     opacity: 0.6;
 }
 
+.effort-badge {
+    font-size: 0.75rem;
+}
+
+.effort-low {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+}
+
+.effort-medium {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+}
+
+.effort-high {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
 .modal-description {
     font-size: 1.125rem;
     color: var(--text-secondary);

@@ -273,6 +273,15 @@ function getFrameworkAbbrev(framework) {
     return abbrevs[framework] || framework;
 }
 
+function getEffortDisplay(effort) {
+    const effortMap = {
+        'low': '🪶 Light',
+        'medium': '🧱 Moderate',
+        'high': '⚒️ Significant'
+    };
+    return effortMap[effort] || effort;
+}
+
 function updateStats() {
     if (!standardsData) return;
 
@@ -356,6 +365,7 @@ function openModal(req) {
                     </svg>
                     ${req.type}
                 </span>
+                ${req.effort ? `<span class="modal-badge effort-badge effort-${req.effort}">${getEffortDisplay(req.effort)}</span>` : ''}
             </div>
             <p class="modal-description">${req.description}</p>
         </div>

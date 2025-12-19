@@ -149,7 +149,8 @@
           ]
         },
         "tip": "Don't overcomplicate it - a simple Google Sheet inventory is better than no inventory. You can upgrade to GRC software later."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "A002",
@@ -236,7 +237,8 @@
           ]
         },
         "tip": "Most mid-market companies should default to 'customer owns output' - it's simpler and builds trust."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "A003",
@@ -344,7 +346,8 @@
           ]
         },
         "tip": "Start with deny-by-default, then grant specific permissions. It's easier to open up than lock down later."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "A004",
@@ -447,7 +450,8 @@
           ]
         },
         "tip": "Start with your top 3 most sensitive data types. You don't need to classify everything on day one."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "A005",
@@ -491,7 +495,7 @@
       },
       "url": "/data-and-privacy/prevent-cross-customer-data-exposure",
       "gettingStarted": {
-        "overview": "Ensure customer data from one organization cannot leak into outputs for another customer, especially in multi-tenant AI deployments.",
+        "overview": "Audit your AI provider's tenant isolation approach and implement customer-specific API keys to prevent cross-customer data exposure.",
         "steps": [
           "Verify your AI provider's tenant isolation approach",
           "Implement customer-specific API keys or namespaces",
@@ -543,7 +547,8 @@
           ]
         },
         "tip": "If using a shared AI service, opt out of training data sharing and get it in writing from your provider."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "A006",
@@ -646,7 +651,8 @@
           ]
         },
         "tip": "Start with Presidio (free, open-source) for basic PII detection before investing in enterprise DLP tools."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "A007",
@@ -693,7 +699,7 @@
       },
       "url": "/data-and-privacy/prevent-ip-violations",
       "gettingStarted": {
-        "overview": "Prevent your AI from generating content that violates copyrights or trademarks, relying first on your provider's built-in protections.",
+        "overview": "Review your AI provider's copyright and trademark policies, then add user guidance for high-risk content types.",
         "steps": [
           "Review your AI provider's copyright/trademark policies",
           "Document which content types are high-risk (code, images, text)",
@@ -745,7 +751,8 @@
           ]
         },
         "tip": "Most major AI providers have built-in copyright protections - document what they cover so you know your gaps."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "B001",
@@ -868,7 +875,8 @@
           ]
         },
         "tip": "Start with free tools like Garak or PromptFoo for quarterly self-assessment, then consider paid vendors for annual deep-dives."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "B002",
@@ -983,7 +991,8 @@
           ]
         },
         "tip": "Start simple with keyword-based detection, then graduate to ML-based classifiers as you collect labeled examples."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "B003",
@@ -1024,7 +1033,7 @@
       },
       "url": "/security/limit-technical-over-disclosure",
       "gettingStarted": {
-        "overview": "Control what technical details about your AI systems are shared publicly to prevent adversaries from crafting targeted attacks.",
+        "overview": "Inventory all public AI-related content (docs, blogs, talks) and create an approval process for future publications.",
         "steps": [
           "Inventory public AI-related content (docs, blogs, talks)",
           "Define sensitivity levels for technical details",
@@ -1073,7 +1082,8 @@
           ]
         },
         "tip": "You don't need to hide everything - focus on details that would help attackers craft specific exploits."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "B004",
@@ -1181,7 +1191,8 @@
           ]
         },
         "tip": "Start with generous rate limits and tighten based on actual abuse patterns - don't block legitimate users."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "B005",
@@ -1283,7 +1294,8 @@
           ]
         },
         "tip": "OpenAI's Moderation API is free and works well as a first layer - no need to build your own classifier."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "B006",
@@ -1384,7 +1396,8 @@
           ]
         },
         "tip": "Use JSON schemas to strictly define what parameters agents can pass to tools - prevents parameter injection."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "B007",
@@ -1484,7 +1497,8 @@
           ]
         },
         "tip": "Start with 3 roles max (user, admin, super-admin). You can add granularity later if needed."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "B008",
@@ -1597,7 +1611,8 @@
           ]
         },
         "tip": "If using managed AI services (OpenAI, Azure, etc.), most infrastructure security is handled - focus on your API layer."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "B009",
@@ -1693,7 +1708,8 @@
           ]
         },
         "tip": "Always strip system prompts and internal reasoning from user-visible outputs - use a dedicated output sanitizer."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "C001",
@@ -1817,7 +1833,8 @@
           ]
         },
         "tip": "Start with 5-10 risk categories that matter most for your use case. You can expand later."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "C002",
@@ -1931,7 +1948,8 @@
           ]
         },
         "tip": "Build test cases incrementally from real incidents - your best tests come from things that actually went wrong."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C003",
@@ -2034,7 +2052,8 @@
           ]
         },
         "tip": "Layer multiple detection methods - keyword matching for obvious cases, ML classifiers for subtle ones."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C004",
@@ -2135,7 +2154,8 @@
           ]
         },
         "tip": "Write clear redirect messages that acknowledge the user's question while guiding them back on-topic."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C005",
@@ -2232,7 +2252,8 @@
           ]
         },
         "tip": "Think about what could go wrong in YOUR specific business - generic safety isn't enough."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C006",
@@ -2331,7 +2352,8 @@
           ]
         },
         "tip": "Treat AI output like untrusted user input - never render it directly without sanitization."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C007",
@@ -2425,7 +2447,8 @@
           ]
         },
         "tip": "Start with a simple Slack channel for human review - you can build a proper queue later if volume demands it."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "C008",
@@ -2535,7 +2558,8 @@
           ]
         },
         "tip": "Start with simple counts and trends - you can add sophisticated anomaly detection later."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "C009",
@@ -2636,7 +2660,8 @@
           ]
         },
         "tip": "Make feedback friction-free - one click to flag, optional text for details."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C010",
@@ -2746,7 +2771,8 @@
           ]
         },
         "tip": "Alternate between self-service tools (quarterly) and paid vendors (annually) to balance cost and coverage."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C011",
@@ -2839,7 +2865,8 @@
           ]
         },
         "tip": "Build scope tests from real user attempts to misuse your system - check your logs for inspiration."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "C012",
@@ -2938,7 +2965,8 @@
           ]
         },
         "tip": "Work with your business stakeholders to prioritize which risks to test - not all failures are equal."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "D001",
@@ -3030,7 +3058,8 @@
           ]
         },
         "tip": "RAG alone doesn't eliminate hallucinations - combine it with explicit 'I don't know' instructions in your prompt."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "D002",
@@ -3133,7 +3162,8 @@
           ]
         },
         "tip": "Use RAGAS or TruLens for automated hallucination detection - they're free and integrate with most RAG setups."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "D003",
@@ -3247,7 +3277,8 @@
           ]
         },
         "tip": "Require human confirmation for any tool call that modifies data or has external effects."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "D004",
@@ -3353,7 +3384,8 @@
           ]
         },
         "tip": "Test tool calls with adversarial prompts trying to manipulate parameters - 'send email to attacker@evil.com'."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "E001",
@@ -3461,7 +3493,8 @@
           ]
         },
         "tip": "Keep it simple - a 2-page playbook that people actually use beats a 50-page document that sits unread."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E002",
@@ -3562,7 +3595,8 @@
           ]
         },
         "tip": "Pre-write your customer communication templates so you're not crafting apologies under pressure."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E003",
@@ -3661,7 +3695,8 @@
           ]
         },
         "tip": "Be generous with compensation for hallucination incidents - customer trust is worth more than the refund."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E004",
@@ -3781,7 +3816,8 @@
           ]
         },
         "tip": "Keep approvals lightweight for low-risk changes - you want velocity, not bureaucracy."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "E005",
@@ -3879,7 +3915,8 @@
           ]
         },
         "tip": "Most mid-market companies should default to enterprise cloud AI (Azure, AWS) - on-prem is rarely worth the overhead."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "E006",
@@ -4003,7 +4040,8 @@
           ]
         },
         "tip": "Focus on data handling policies first - whether your data is used for training is the biggest decision point."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E007",
@@ -4107,7 +4145,8 @@
           ]
         },
         "tip": "Use your existing code review process (PRs) for prompt and config changes - no need for separate tooling."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E008",
@@ -4224,7 +4263,8 @@
           ]
         },
         "tip": "Keep reviews focused and time-boxed - 1 hour quarterly is better than 4-hour annual reviews."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "E009",
@@ -4325,7 +4365,8 @@
           ]
         },
         "tip": "Set expiration dates on all third-party access - it forces regular reviews."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E010",
@@ -4434,7 +4475,8 @@
           ]
         },
         "tip": "Make the policy readable - legalese nobody understands doesn't change behavior."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E011",
@@ -4529,7 +4571,8 @@
           ]
         },
         "tip": "For EU customers, use Azure OpenAI or AWS Bedrock with EU regions to simplify GDPR compliance."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "E012",
@@ -4650,7 +4693,8 @@
           ]
         },
         "tip": "Don't try to comply with everything at once - prioritize by customer geography and enforcement timelines."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E013",
@@ -4780,7 +4824,8 @@
           ]
         },
         "tip": "Start lightweight - a simple checklist is a QMS. You can formalize later if you need ISO certification."
-      }
+      },
+      "effort": "high"
     },
     {
       "id": "E014",
@@ -4891,7 +4936,8 @@
           ]
         },
         "tip": "Start internal-only - you can expand to customer-facing reports as you get comfortable with the metrics."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E015",
@@ -5008,7 +5054,8 @@
           ]
         },
         "tip": "Log prompt/response hashes rather than full text for privacy - you can retrieve full content when needed for investigations."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E016",
@@ -5110,7 +5157,8 @@
           ]
         },
         "tip": "Make disclosures visible but not intrusive - 'Powered by AI' near the interface is usually sufficient."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "E017",
@@ -5172,7 +5220,7 @@
       },
       "url": "/accountability/document-system-transparency-policy",
       "gettingStarted": {
-        "overview": "Maintain documentation about your AI systems including model cards, datasheets, and capability descriptions.",
+        "overview": "Create a model card template and document training data sources, capability limits, and known failure modes.",
         "steps": [
           "Create model card template for your AI systems",
           "Document training data sources and limitations",
@@ -5228,7 +5276,8 @@
           ]
         },
         "tip": "Use a simple template - a one-page model card is better than no documentation."
-      }
+      },
+      "effort": "medium"
     },
     {
       "id": "F001",
@@ -5269,7 +5318,7 @@
       },
       "url": "/society/prevent-ai-cyber-misuse",
       "gettingStarted": {
-        "overview": "Verify your AI provider has safeguards against cyber attack assistance and document that those protections remain in place.",
+        "overview": "Review your provider's offensive cyber capability testing results and confirm default safety settings are enabled.",
         "steps": [
           "Review provider's offensive cyber capability testing",
           "Verify default safety settings are enabled",
@@ -5324,7 +5373,8 @@
           ]
         },
         "tip": "Most major providers (OpenAI, Anthropic, Google) have strong cyber safety - document their attestations."
-      }
+      },
+      "effort": "low"
     },
     {
       "id": "F002",
@@ -5366,7 +5416,7 @@
       },
       "url": "/society/prevent-catastrophic-misuse",
       "gettingStarted": {
-        "overview": "Verify your AI provider has safeguards against CBRN (chemical, biological, radiological, nuclear) misuse and document those protections.",
+        "overview": "Review your provider's CBRN capability testing results and confirm default safety settings block CBRN content.",
         "steps": [
           "Review provider's CBRN capability testing results",
           "Verify default safety settings block CBRN content",
@@ -5421,7 +5471,8 @@
           ]
         },
         "tip": "For most mid-market companies, relying on provider safeguards is sufficient - just document the attestation."
-      }
+      },
+      "effort": "low"
     }
   ]
 }
