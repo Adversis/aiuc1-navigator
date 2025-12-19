@@ -4,7 +4,7 @@
     "version": "1.0",
     "description": "AI Use Case Standard for Enterprise AI Risk Management",
     "source": "https://www.aiuc-1.com",
-    "lastUpdated": "2025-12-10",
+    "lastUpdated": "2025-12-19",
     "totalRequirements": 51
   },
   "principles": [
@@ -415,9 +415,9 @@
             "url": "https://microsoft.com/purview"
           },
           {
-            "name": "Regex filters",
+            "name": "Regex patterns (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://regex101.com"
           }
         ],
         "template": {
@@ -530,14 +530,14 @@
               "API access",
               "Separate API keys",
               "Yes",
-              "2024-01",
+              "2025-01",
               "Per-customer keys"
             ],
             [
               "Model context",
               "Session isolation",
               "Yes",
-              "2024-01",
+              "2025-01",
               "No cross-session memory"
             ]
           ]
@@ -634,14 +634,14 @@
               "Regex + NER",
               "Redact",
               "2%",
-              "2024-01"
+              "2025-01"
             ],
             [
               "SSN",
               "Regex pattern",
               "Block output",
               "<1%",
-              "2024-01"
+              "2025-01"
             ]
           ]
         },
@@ -703,9 +703,9 @@
         ],
         "tools": [
           {
-            "name": "Provider policies",
+            "name": "Your AI provider's policies",
             "type": "free",
-            "url": ""
+            "url": "https://openai.com/policies/usage-policies"
           },
           {
             "name": "Copyscape",
@@ -941,7 +941,7 @@
         ],
         "tools": [
           {
-            "name": "LangSmith",
+            "name": "LangSmith (free tier available)",
             "type": "free",
             "url": "https://smith.langchain.com"
           },
@@ -971,14 +971,14 @@
               "Keyword match",
               "1 occurrence",
               "Log + flag",
-              "2024-01"
+              "2025-01"
             ],
             [
               "System prompt extraction",
               "Pattern regex",
               "Any match",
               "Block + alert",
-              "2024-01"
+              "2025-01"
             ]
           ]
         },
@@ -1435,7 +1435,7 @@
         ],
         "tools": [
           {
-            "name": "Auth0",
+            "name": "Auth0 (free tier available)",
             "type": "free",
             "url": "https://auth0.com"
           },
@@ -1577,14 +1577,14 @@
               "TLS encryption",
               "Done",
               "Let's Encrypt",
-              "2024-01",
+              "2025-01",
               "DevOps"
             ],
             [
               "API authentication",
               "Done",
               "JWT tokens",
-              "2024-01",
+              "2025-01",
               "Engineering"
             ],
             [
@@ -1664,9 +1664,9 @@
             "url": "https://github.com/NVIDIA/NeMo-Guardrails"
           },
           {
-            "name": "Custom middleware",
+            "name": "Custom middleware (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://expressjs.com/en/guide/using-middleware.html"
           }
         ],
         "template": {
@@ -1896,7 +1896,7 @@
             "url": "https://pytest.org"
           },
           {
-            "name": "Weights & Biases",
+            "name": "Weights & Biases (free tier available)",
             "type": "free",
             "url": "https://wandb.ai"
           }
@@ -2100,9 +2100,9 @@
             "url": "https://guardrailsai.com"
           },
           {
-            "name": "Custom prompting",
+            "name": "Custom system prompts (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://platform.openai.com/docs/guides/prompt-engineering"
           }
         ],
         "template": {
@@ -2195,9 +2195,9 @@
             "url": "https://guardrailsai.com"
           },
           {
-            "name": "Custom validators",
+            "name": "Custom validators (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://guardrailsai.com/docs/concepts/validators"
           },
           {
             "name": "Aporia",
@@ -2498,7 +2498,7 @@
             "url": "https://langfuse.com"
           },
           {
-            "name": "Weights & Biases",
+            "name": "Weights & Biases (free tier available)",
             "type": "free",
             "url": "https://wandb.ai"
           },
@@ -2591,9 +2591,9 @@
         ],
         "tools": [
           {
-            "name": "Custom UI components",
+            "name": "Custom UI components (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://react.dev/learn"
           },
           {
             "name": "Intercom",
@@ -2728,7 +2728,7 @@
           ],
           "rows": [
             [
-              "Q1 2024",
+              "Q1 2025",
               "Garak (internal)",
               "15",
               "2",
@@ -2736,7 +2736,7 @@
               "1"
             ],
             [
-              "Q2 2024",
+              "Q2 2025",
               "HaizeLabz",
               "8",
               "1",
@@ -2802,9 +2802,9 @@
             "url": "https://promptfoo.dev"
           },
           {
-            "name": "Custom test suites",
+            "name": "Custom test suites (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://promptfoo.dev/docs/getting-started"
           },
           {
             "name": "Patronus AI",
@@ -2898,9 +2898,9 @@
             "url": "https://promptfoo.dev"
           },
           {
-            "name": "Custom validators",
+            "name": "Custom validators (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://guardrailsai.com/docs/concepts/validators"
           },
           {
             "name": "Patronus AI",
@@ -3208,9 +3208,9 @@
             "url": "https://anthropic.com"
           },
           {
-            "name": "Custom middleware",
+            "name": "Custom middleware (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://expressjs.com/en/guide/using-middleware.html"
           }
         ],
         "template": {
@@ -3309,9 +3309,9 @@
             "url": "https://promptfoo.dev"
           },
           {
-            "name": "Custom test harness",
+            "name": "Custom test harness (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://promptfoo.dev/docs/getting-started"
           },
           {
             "name": "Patronus AI",
@@ -4010,6 +4010,7 @@
       "principle": "E",
       "principleName": "Accountability",
       "title": "Document system change approvals",
+      "retired": true,
       "description": "Define approval processes for material changes to AI systems (model versions, access controls, data sources) requiring formal review and sign-off",
       "status": "Optional",
       "frequency": "Every 12 months",
@@ -4090,14 +4091,14 @@
           ],
           "rows": [
             [
-              "2024-01-15",
+              "2025-01-15",
               "Model update",
               "GPT-4 to GPT-4 Turbo",
               "J. Smith",
               "PR #234"
             ],
             [
-              "2024-01-20",
+              "2025-01-20",
               "Prompt change",
               "Added safety guardrail",
               "M. Jones",
@@ -4292,9 +4293,9 @@
             "url": "https://datadoghq.com"
           },
           {
-            "name": "Custom logging",
+            "name": "Custom logging (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://langfuse.com/docs/get-started"
           }
         ],
         "template": {
@@ -4311,15 +4312,15 @@
               "Integration vendor",
               "API read",
               "Data sync",
-              "2024-12-31",
-              "2024-01"
+              "2025-12-31",
+              "2025-01"
             ],
             [
               "ML consultant",
               "Full admin",
               "Model tuning",
-              "2024-03-31",
-              "2024-01"
+              "2025-03-31",
+              "2025-01"
             ]
           ]
         },
@@ -4967,7 +4968,7 @@
             "url": "https://langfuse.com"
           },
           {
-            "name": "LangSmith",
+            "name": "LangSmith (free tier available)",
             "type": "free",
             "url": "https://smith.langchain.com"
           },
@@ -5064,9 +5065,9 @@
         ],
         "tools": [
           {
-            "name": "Custom UI",
+            "name": "Custom UI (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://react.dev/learn"
           },
           {
             "name": "Content Credentials",
@@ -5278,9 +5279,9 @@
         ],
         "tools": [
           {
-            "name": "Provider documentation",
+            "name": "Your AI provider's safety docs",
             "type": "free",
-            "url": ""
+            "url": "https://www.anthropic.com/responsible-scaling-policy"
           },
           {
             "name": "Guardrails AI",
@@ -5288,9 +5289,9 @@
             "url": "https://guardrailsai.com"
           },
           {
-            "name": "Custom keyword filters",
+            "name": "Keyword filters (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://guardrailsai.com/docs/concepts/validators"
           }
         ],
         "template": {
@@ -5375,9 +5376,9 @@
         ],
         "tools": [
           {
-            "name": "Provider documentation",
+            "name": "Your AI provider's safety docs",
             "type": "free",
-            "url": ""
+            "url": "https://www.anthropic.com/responsible-scaling-policy"
           },
           {
             "name": "Guardrails AI",
@@ -5385,9 +5386,9 @@
             "url": "https://guardrailsai.com"
           },
           {
-            "name": "Custom keyword filters",
+            "name": "Keyword filters (self-built)",
             "type": "free",
-            "url": ""
+            "url": "https://guardrailsai.com/docs/concepts/validators"
           }
         ],
         "template": {
