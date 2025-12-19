@@ -620,7 +620,7 @@ body {
 .col-id { width: 80px; }
 .col-principle { width: 140px; }
 .col-title { min-width: 280px; }
-.col-status { width: 100px; }
+.col-status { width: 120px; }
 .col-frequency { width: 130px; }
 .col-frameworks { width: 200px; }
 
@@ -712,6 +712,18 @@ body {
 .status-badge.optional {
     background: rgba(99, 102, 241, 0.15);
     color: var(--status-optional);
+}
+
+.effort-icon {
+    margin-left: var(--space-2);
+    font-size: 0.875rem;
+    opacity: 0.9;
+    cursor: help;
+    vertical-align: middle;
+}
+
+.requirements-table td:nth-child(4) {
+    white-space: nowrap;
 }
 
 .frequency-text {

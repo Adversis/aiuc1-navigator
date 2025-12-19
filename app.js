@@ -221,6 +221,7 @@ function renderRequirements() {
             </td>
             <td>
                 <span class="status-badge ${req.status.toLowerCase()}">${req.status}</span>
+                <span class="effort-icon" title="${getEffortLabel(req.effort)}">${getEffortEmoji(req.effort)}</span>
             </td>
             <td>
                 <span class="frequency-text">${req.frequency}</span>
@@ -277,9 +278,17 @@ function getEffortDisplay(effort) {
     const effortMap = {
         'low': '🪶 Light',
         'medium': '🧱 Moderate',
-        'high': '⚒️ Significant'
+        'high': '⚓ Significant'
     };
     return effortMap[effort] || effort;
+}
+
+function getEffortEmoji(effort) {
+    return { low: '🪶', medium: '🧱', high: '⚓' }[effort] || '';
+}
+
+function getEffortLabel(effort) {
+    return { low: 'Light effort', medium: 'Moderate effort', high: 'Significant effort' }[effort] || '';
 }
 
 function updateStats() {
