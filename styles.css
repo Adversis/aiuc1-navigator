@@ -4,32 +4,32 @@
    ======================================== */
 
 :root {
-    /* Core palette - Deep editorial */
-    --bg-primary: #0a0a0b;
-    --bg-secondary: #111113;
-    --bg-tertiary: #18181b;
-    --bg-elevated: #1f1f23;
+    /* Core palette - Light editorial */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --bg-tertiary: #e4e4e7;
+    --bg-elevated: #d4d4d8;
 
-    --text-primary: #fafafa;
-    --text-secondary: #a1a1aa;
+    --text-primary: #09090b;
+    --text-secondary: #3f3f46;
     --text-tertiary: #71717a;
-    --text-muted: #52525b;
+    --text-muted: #a1a1aa;
 
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-default: rgba(255, 255, 255, 0.1);
-    --border-strong: rgba(255, 255, 255, 0.15);
+    --border-subtle: rgba(0, 0, 0, 0.07);
+    --border-default: rgba(0, 0, 0, 0.12);
+    --border-strong: rgba(0, 0, 0, 0.2);
 
-    /* Principle colors - Saturated accents */
-    --principle-A: #60a5fa; /* Data & Privacy - Cool blue */
-    --principle-B: #f472b6; /* Security - Vibrant pink */
-    --principle-C: #fbbf24; /* Safety - Warm amber */
-    --principle-D: #a78bfa; /* Reliability - Soft purple */
-    --principle-E: #34d399; /* Accountability - Fresh green */
-    --principle-F: #fb923c; /* Society - Warm orange */
+    /* Principle colors - Darkened for light backgrounds */
+    --principle-A: #2563eb; /* Data & Privacy - Blue */
+    --principle-B: #db2777; /* Security - Pink */
+    --principle-C: #d97706; /* Safety - Amber */
+    --principle-D: #7c3aed; /* Reliability - Violet */
+    --principle-E: #059669; /* Accountability - Emerald */
+    --principle-F: #ea580c; /* Society - Orange */
 
     /* Status colors */
-    --status-mandatory: #ef4444;
-    --status-optional: #6366f1;
+    --status-mandatory: #dc2626;
+    --status-optional: #4f46e5;
 
     /* Typography */
     --font-display: 'Instrument Serif', Georgia, serif;
@@ -86,7 +86,7 @@ body {
     inset: 0;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.03;
+    opacity: 0.015;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
@@ -98,7 +98,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10, 10, 11, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-subtle);
 }
@@ -705,12 +705,12 @@ body {
 }
 
 .status-badge.mandatory {
-    background: rgba(239, 68, 68, 0.15);
+    background: rgba(220, 38, 38, 0.1);
     color: var(--status-mandatory);
 }
 
 .status-badge.optional {
-    background: rgba(99, 102, 241, 0.15);
+    background: rgba(79, 70, 229, 0.1);
     color: var(--status-optional);
 }
 
@@ -875,18 +875,18 @@ body {
 }
 
 .effort-low {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
 }
 
 .effort-medium {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
+    background: rgba(217, 119, 6, 0.1);
+    color: #d97706;
 }
 
 .effort-high {
-    background: rgba(239, 68, 68, 0.15);
-    color: #ef4444;
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
 }
 
 .modal-description {
@@ -1113,17 +1113,17 @@ body {
 }
 
 .tool-type.free {
-    background: rgba(52, 211, 153, 0.15);
+    background: rgba(5, 150, 105, 0.1);
     color: var(--principle-E);
 }
 
 .tool-type.paid {
-    background: rgba(244, 114, 182, 0.15);
+    background: rgba(219, 39, 119, 0.1);
     color: var(--principle-B);
 }
 
 .tool-type.oss {
-    background: rgba(96, 165, 250, 0.15);
+    background: rgba(37, 99, 235, 0.1);
     color: var(--principle-A);
 }
 
@@ -1184,7 +1184,7 @@ body {
     display: flex;
     gap: var(--space-3);
     padding: var(--space-4);
-    background: rgba(251, 191, 36, 0.08);
+    background: rgba(217, 119, 6, 0.08);
     border-radius: 8px;
     border-left: 3px solid var(--principle-C);
 }
@@ -1452,6 +1452,6 @@ body {
    ======================================== */
 
 ::selection {
-    background: var(--principle-C);
-    color: var(--bg-primary);
+    background: var(--principle-D);
+    color: #ffffff;
 }
