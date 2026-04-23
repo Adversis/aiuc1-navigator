@@ -1,10 +1,10 @@
 {
   "metadata": {
     "standard": "AIUC-1",
-    "version": "1.0",
+    "version": "April, 2026",
     "description": "AI Use Case Standard for Enterprise AI Risk Management",
     "source": "https://www.aiuc-1.com",
-    "lastUpdated": "2025-12-19",
+    "lastUpdated": "2026-04-23",
     "totalRequirements": 51
   },
   "principles": [
@@ -45,7 +45,7 @@
       "principle": "A",
       "principleName": "Data & Privacy",
       "title": "Establish input data policy",
-      "description": "Establish and communicate AI input data policies covering customer data usage for model training, inference processing, data retention periods, and customer rights",
+      "description": "Establish and communicate AI input data policies covering how customer data is used for model training, inference processing, data retention periods, and customer data rights",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -150,14 +150,15 @@
         },
         "tip": "Don't overcomplicate it - a simple Google Sheet inventory is better than no inventory. You can upgrade to GRC software later."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "A002",
       "principle": "A",
       "principleName": "Data & Privacy",
       "title": "Establish output data policy",
-      "description": "Establish AI output ownership, usage, opt-out and deletion policies to customers and communicate these policies",
+      "description": "Establish AI output ownership, usage, opt-in/out and deletion policies to customers and communicate these policies",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -238,14 +239,15 @@
         },
         "tip": "Most mid-market companies should default to 'customer owns output' - it's simpler and builds trust."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "A003",
       "principle": "A",
       "principleName": "Data & Privacy",
-      "title": "Limit AI agent data collection",
-      "description": "Implement safeguards to restrict AI agent data access to task-relevant information based on user roles and context",
+      "title": "Limit AI agent data access",
+      "description": "Implement safeguards to limit AI agent data access based on task, user role, agent role and context",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -347,7 +349,8 @@
         },
         "tip": "Start with deny-by-default, then grant specific permissions. It's easier to open up than lock down later."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "A004",
@@ -451,7 +454,8 @@
         },
         "tip": "Start with your top 3 most sensitive data types. You don't need to classify everything on day one."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "A005",
@@ -548,14 +552,15 @@
         },
         "tip": "If using a shared AI service, opt out of training data sharing and get it in writing from your provider."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "A006",
       "principle": "A",
       "principleName": "Data & Privacy",
       "title": "Prevent PII leakage",
-      "description": "Establish safeguards to prevent personal data leakage through AI outputs",
+      "description": "Establish safeguards to prevent personal data leakage through AI outputs and logs",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -652,7 +657,8 @@
         },
         "tip": "Start with Presidio (free, open-source) for basic PII detection before investing in enterprise DLP tools."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "A007",
@@ -752,7 +758,8 @@
         },
         "tip": "Most major AI providers have built-in copyright protections - document what they cover so you know your gaps."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Text-generation, Voice-generation, Image-generation"
     },
     {
       "id": "B001",
@@ -876,14 +883,15 @@
         },
         "tip": "Start with free tools like Garak or PromptFoo for quarterly self-assessment, then consider paid vendors for annual deep-dives."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "B002",
       "principle": "B",
       "principleName": "Security",
       "title": "Detect adversarial input",
-      "description": "Implement monitoring capabilities to detect and respond to adversarial inputs and prompt injection attempts",
+      "description": "Implement monitoring capabilities to detect and enable responding to adversarial inputs and prompt injection attempts",
       "status": "Optional",
       "frequency": "Every 3 months",
       "type": "Detective",
@@ -992,7 +1000,8 @@
         },
         "tip": "Start simple with keyword-based detection, then graduate to ML-based classifiers as you collect labeled examples."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "B003",
@@ -1083,7 +1092,8 @@
         },
         "tip": "You don't need to hide everything - focus on details that would help attackers craft specific exploits."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Universal"
     },
     {
       "id": "B004",
@@ -1192,14 +1202,15 @@
         },
         "tip": "Start with generous rate limits and tighten based on actual abuse patterns - don't block legitimate users."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "B005",
       "principle": "B",
       "principleName": "Security",
       "title": "Implement real-time input filtering",
-      "description": "Deploy automated moderation tools for real-time input filtering",
+      "description": "Implement real-time input filtering using automated moderation tools",
       "status": "Optional",
       "frequency": "Every 12 months",
       "type": "Detective",
@@ -1295,14 +1306,15 @@
         },
         "tip": "OpenAI's Moderation API is free and works well as a first layer - no need to build your own classifier."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation, Image-generation"
     },
     {
       "id": "B006",
       "principle": "B",
       "principleName": "Security",
-      "title": "Limit AI agent system access",
-      "description": "Implement safeguards to limit AI agent system access based on context and declared objectives",
+      "title": "Prevent unauthorized AI agent actions",
+      "description": "Implement safeguards to prevent AI agents from performing actions beyond intended scope and authorized privileges",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -1397,7 +1409,8 @@
         },
         "tip": "Use JSON schemas to strictly define what parameters agents can pass to tools - prevents parameter injection."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Automation"
     },
     {
       "id": "B007",
@@ -1498,14 +1511,15 @@
         },
         "tip": "Start with 3 roles max (user, admin, super-admin). You can add granularity later if needed."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "B008",
       "principle": "B",
       "principleName": "Security",
-      "title": "Protect model deployment environment",
-      "description": "Implement security measures for AI model deployment environments including encryption, access controls and authorization",
+      "title": "Protect AI system deployment environment",
+      "description": "Implement security measures for AI system deployment environments including encryption, access controls and authorization",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -1612,7 +1626,8 @@
         },
         "tip": "If using managed AI services (OpenAI, Azure, etc.), most infrastructure security is handled - focus on your API layer."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "B009",
@@ -1709,16 +1724,17 @@
         },
         "tip": "Always strip system prompts and internal reasoning from user-visible outputs - use a dedicated output sanitizer."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Text-generation, Voice-generation"
     },
     {
       "id": "C001",
       "principle": "C",
       "principleName": "Safety",
       "title": "Define AI risk taxonomy",
-      "description": "Establish a risk taxonomy that categorizes risks within harmful, out-of-scope, and hallucinated outputs, tool calls, and other risks based on application-specific usage",
+      "description": "Establish a risk taxonomy based on system capabilities and deployment context",
       "status": "Mandatory",
-      "frequency": "Every 3 months",
+      "frequency": "Every 12 months",
       "type": "Preventative",
       "keywords": [
         "Risk Taxonomy",
@@ -1834,14 +1850,15 @@
         },
         "tip": "Start with 5-10 risk categories that matter most for your use case. You can expand later."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "C002",
       "principle": "C",
       "principleName": "Safety",
       "title": "Conduct pre-deployment testing",
-      "description": "Conduct internal testing of AI systems before deployment across risk categories including high-risk, harmful, hallucinated, and out-of-scope outputs and tool calls for system changes requiring formal review or approval",
+      "description": "Conduct internal testing of AI systems prior to deployment across risk categories for system changes requiring formal review or approval",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -1949,7 +1966,8 @@
         },
         "tip": "Build test cases incrementally from real incidents - your best tests come from things that actually went wrong."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "C003",
@@ -2053,14 +2071,15 @@
         },
         "tip": "Layer multiple detection methods - keyword matching for obvious cases, ML classifiers for subtle ones."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation, Image-generation"
     },
     {
       "id": "C004",
       "principle": "C",
       "principleName": "Safety",
       "title": "Prevent out-of-scope outputs",
-      "description": "Implement safeguards or technical controls to prevent out-of-scope outputs such as political discussion or healthcare advice that fall outside the AI system's intended use cases",
+      "description": "Implement safeguards or technical controls to prevent out-of-scope outputs (e.g. political discussion, healthcare advice)",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -2155,7 +2174,8 @@
         },
         "tip": "Write clear redirect messages that acknowledge the user's question while guiding them back on-topic."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation"
     },
     {
       "id": "C005",
@@ -2253,7 +2273,8 @@
         },
         "tip": "Think about what could go wrong in YOUR specific business - generic safety isn't enough."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "C006",
@@ -2353,14 +2374,15 @@
         },
         "tip": "Treat AI output like untrusted user input - never render it directly without sanitization."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Code-generation, Text-generation, Voice-generation"
     },
     {
       "id": "C007",
       "principle": "C",
       "principleName": "Safety",
-      "title": "Flag high risk recommendations",
-      "description": "Implement an alerting system that flags high-risk recommendations for human review",
+      "title": "Flag high risk outputs for human review",
+      "description": "Implement an alerting system that flags high-risk outputs for human review",
       "status": "Optional",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -2448,7 +2470,8 @@
         },
         "tip": "Start with a simple Slack channel for human review - you can build a proper queue later if volume demands it."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "C008",
@@ -2559,14 +2582,15 @@
         },
         "tip": "Start with simple counts and trends - you can add sophisticated anomaly detection later."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "C009",
       "principle": "C",
       "principleName": "Safety",
       "title": "Enable real-time feedback and intervention",
-      "description": "Implement mechanisms to enable real-time user feedback collection and intervention mechanisms during AI system interactions",
+      "description": "Implement mechanisms to enable real-time user feedback collection, intervention and actioning mechanisms",
       "status": "Optional",
       "frequency": "Every 3 months",
       "type": "Preventative",
@@ -2661,7 +2685,8 @@
         },
         "tip": "Make feedback friction-free - one click to flag, optional text for details."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "C010",
@@ -2772,14 +2797,15 @@
         },
         "tip": "Alternate between self-service tools (quarterly) and paid vendors (annually) to balance cost and coverage."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation, Image-generation"
     },
     {
       "id": "C011",
       "principle": "C",
       "principleName": "Safety",
       "title": "Third-party testing for out-of-scope outputs",
-      "description": "Appoint qualified external assessors to evaluate system robustness against out-of-scope outputs (e.g., political discussion, healthcare advice) at minimum quarterly intervals",
+      "description": "Appoint expert third parties to evaluate system robustness to out-of-scope outputs at least every 3 months (e.g. political discussion, healthcare advice)",
       "status": "Mandatory",
       "frequency": "Every 3 months",
       "type": "Preventative",
@@ -2866,7 +2892,8 @@
         },
         "tip": "Build scope tests from real user attempts to misuse your system - check your logs for inspiration."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation"
     },
     {
       "id": "C012",
@@ -2966,7 +2993,8 @@
         },
         "tip": "Work with your business stakeholders to prioritize which risks to test - not all failures are equal."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "D001",
@@ -3059,14 +3087,15 @@
         },
         "tip": "RAG alone doesn't eliminate hallucinations - combine it with explicit 'I don't know' instructions in your prompt."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation, Code-generation"
     },
     {
       "id": "D002",
       "principle": "D",
       "principleName": "Reliability",
       "title": "Third-party testing for hallucinations",
-      "description": "Appoint qualified external assessors to evaluate hallucinated outputs at minimum quarterly intervals",
+      "description": "Appoint expert third-parties to evaluate hallucinated outputs at least every 3 months",
       "status": "Mandatory",
       "frequency": "Every 3 months",
       "type": "Preventative",
@@ -3163,7 +3192,8 @@
         },
         "tip": "Use RAGAS or TruLens for automated hallucination detection - they're free and integrate with most RAG setups."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Text-generation, Voice-generation"
     },
     {
       "id": "D003",
@@ -3278,14 +3308,15 @@
         },
         "tip": "Require human confirmation for any tool call that modifies data or has external effects."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Automation"
     },
     {
       "id": "D004",
       "principle": "D",
       "principleName": "Reliability",
       "title": "Third-party testing of tool calls",
-      "description": "Appoint expert third parties to evaluate tool calls within AI systems, specifically assessing risks including unauthorized action execution, restricted information access, or decisions exceeding intended scope",
+      "description": "Appoint expert third-parties to evaluate tool calls in AI systems, including executing unauthorized actions, accessing restricted information, or making decisions beyond their intended scope at least every 3 months",
       "status": "Mandatory",
       "frequency": "Every 3 months",
       "type": "Preventative",
@@ -3385,14 +3416,15 @@
         },
         "tip": "Test tool calls with adversarial prompts trying to manipulate parameters - 'send email to attacker@evil.com'."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Automation"
     },
     {
       "id": "E001",
       "principle": "E",
       "principleName": "Accountability",
       "title": "AI failure plan for security breaches",
-      "description": "Document AI failure plan for AI privacy and security breaches assigning accountable owners and establishing notification and remediation with third-party support as needed",
+      "description": "Document AI failure plan for AI privacy and security breaches assigning accountable owners and establishing notification and remediation with third-party support as needed (e.g. legal, PR, insurers)",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -3494,14 +3526,15 @@
         },
         "tip": "Keep it simple - a 2-page playbook that people actually use beats a 50-page document that sits unread."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E002",
       "principle": "E",
       "principleName": "Accountability",
       "title": "AI failure plan for harmful outputs",
-      "description": "Document a comprehensive response plan addressing harmful AI outputs causing significant customer harm, assigning accountability and establishing remediation procedures",
+      "description": "Document AI failure plan for harmful AI outputs that cause significant customer harm assigning accountable owners and establishing remediation with third-party support as needed (e.g. legal, PR, insurers)",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -3596,14 +3629,15 @@
         },
         "tip": "Pre-write your customer communication templates so you're not crafting apologies under pressure."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Text-generation, Voice-generation, Image-generation"
     },
     {
       "id": "E003",
       "principle": "E",
       "principleName": "Accountability",
       "title": "AI failure plan for hallucinations",
-      "description": "Document procedures addressing hallucinated AI outputs causing substantial customer financial loss, including accountability assignment and remediation processes",
+      "description": "Document AI failure plan for hallucinated AI outputs that cause substantial customer financial loss assigning accountable owners and establishing remediation with third-party support as needed (e.g. legal, PR, insurers)",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -3696,7 +3730,8 @@
         },
         "tip": "Be generous with compensation for hallucination incidents - customer trust is worth more than the refund."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Text-generation, Voice-generation"
     },
     {
       "id": "E004",
@@ -3817,14 +3852,15 @@
         },
         "tip": "Keep approvals lightweight for low-risk changes - you want velocity, not bureaucracy."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Universal"
     },
     {
       "id": "E005",
       "principle": "E",
       "principleName": "Accountability",
-      "title": "Assess cloud vs on-prem processing",
-      "description": "Establish criteria for selecting cloud provider, and circumstances for on-premises processing considering data sensitivity, regulatory requirements, security controls, and operational needs",
+      "title": "Document data storage security",
+      "description": "Document data storage security practices considering data sensitivity, regulatory requirements, security controls, and operational needs",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -3916,7 +3952,8 @@
         },
         "tip": "Most mid-market companies should default to enterprise cloud AI (Azure, AWS) - on-prem is rarely worth the overhead."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Universal"
     },
     {
       "id": "E006",
@@ -4041,15 +4078,16 @@
         },
         "tip": "Focus on data handling policies first - whether your data is used for training is the biggest decision point."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E007",
       "principle": "E",
       "principleName": "Accountability",
-      "title": "Document system change approvals",
+      "title": "[Retired] Document system change approvals",
       "retired": true,
-      "description": "Define approval processes for material changes to AI systems (model versions, access controls, data sources) requiring formal review and sign-off",
+      "description": "Merged with E004 - see changelog (Q1 2026 update)",
       "status": "Optional",
       "frequency": "Every 12 months",
       "type": "Detective",
@@ -4146,7 +4184,8 @@
         },
         "tip": "Use your existing code review process (PRs) for prompt and config changes - no need for separate tooling."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E008",
@@ -4264,7 +4303,8 @@
         },
         "tip": "Keep reviews focused and time-boxed - 1 hour quarterly is better than 4-hour annual reviews."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Universal"
     },
     {
       "id": "E009",
@@ -4272,7 +4312,7 @@
       "principleName": "Accountability",
       "title": "Monitor third-party access",
       "description": "Implement systems to monitor third party access",
-      "status": "Optional",
+      "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
       "keywords": [
@@ -4366,14 +4406,15 @@
         },
         "tip": "Set expiration dates on all third-party access - it forces regular reviews."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E010",
       "principle": "E",
       "principleName": "Accountability",
       "title": "Establish AI acceptable use policy",
-      "description": "Establish and implement a policy that defines prohibited AI usage, implements detection/monitoring tools, and provides user feedback when violations occur",
+      "description": "Establish and implement an AI acceptable use policy",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -4476,7 +4517,8 @@
         },
         "tip": "Make the policy readable - legalese nobody understands doesn't change behavior."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E011",
@@ -4572,7 +4614,8 @@
         },
         "tip": "For EU customers, use Azure OpenAI or AWS Bedrock with EU regions to simplify GDPR compliance."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Universal"
     },
     {
       "id": "E012",
@@ -4694,13 +4737,14 @@
         },
         "tip": "Don't try to comply with everything at once - prioritize by customer geography and enforcement timelines."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E013",
       "principle": "E",
       "principleName": "Accountability",
-      "title": "Implement quality management system",
+      "title": "[Retired] Implement quality management system",
       "description": "Establish a quality management system for AI systems proportionate to the size of the organization",
       "status": "Optional",
       "frequency": "Every 12 months",
@@ -4825,14 +4869,15 @@
         },
         "tip": "Start lightweight - a simple checklist is a QMS. You can formalize later if you need ISO certification."
       },
-      "effort": "high"
+      "effort": "high",
+      "capabilities": "Universal"
     },
     {
       "id": "E014",
       "principle": "E",
       "principleName": "Accountability",
       "title": "Share transparency reports",
-      "description": "Establish policies for sharing transparency reports with relevant stakeholders including regulators and customers",
+      "description": "Merged with E017 - see changelog (Q1 2026 update)",
       "status": "Optional",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -4937,14 +4982,15 @@
         },
         "tip": "Start internal-only - you can expand to customer-facing reports as you get comfortable with the metrics."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E015",
       "principle": "E",
       "principleName": "Accountability",
-      "title": "Log model activity",
-      "description": "Maintain logs of AI system processes, actions, and model outputs where permitted to support incident investigation, auditing, and explanation of AI system behavior",
+      "title": "Log AI system activity",
+      "description": "Maintain logs of AI system processes, actions, and agent outputs where permitted to support incident investigation, auditing, and explanation of AI system behavior",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Detective",
@@ -5055,14 +5101,15 @@
         },
         "tip": "Log prompt/response hashes rather than full text for privacy - you can retrieve full content when needed for investigations."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E016",
       "principle": "E",
       "principleName": "Accountability",
       "title": "Implement AI disclosure mechanisms",
-      "description": "Implement clear disclosure mechanisms to inform users when they are interacting with AI systems rather than human operators",
+      "description": "Implement clear disclosure mechanisms to inform users when they are interacting with AI systems rather than humans",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Preventative",
@@ -5158,7 +5205,8 @@
         },
         "tip": "Make disclosures visible but not intrusive - 'Powered by AI' near the interface is usually sufficient."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "E017",
@@ -5277,7 +5325,8 @@
         },
         "tip": "Use a simple template - a one-page model card is better than no documentation."
       },
-      "effort": "medium"
+      "effort": "medium",
+      "capabilities": "Universal"
     },
     {
       "id": "F001",
@@ -5374,14 +5423,15 @@
         },
         "tip": "Most major providers (OpenAI, Anthropic, Google) have strong cyber safety - document their attestations."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Text-generation, Automation, Voice-generation, Code-generation"
     },
     {
       "id": "F002",
       "principle": "F",
       "principleName": "Society",
       "title": "Prevent catastrophic misuse",
-      "description": "Implement or document guardrails to prevent AI-enabled catastrophic system misuse involving chemical, biological, radiological, or nuclear (CBRN) weapons development or mass harm scenarios",
+      "description": "Implement or document guardrails to prevent AI-enabled catastrophic system misuse (chemical / bio / radio / nuclear)",
       "status": "Mandatory",
       "frequency": "Every 12 months",
       "type": "Detective",
@@ -5472,7 +5522,8 @@
         },
         "tip": "For most mid-market companies, relying on provider safeguards is sufficient - just document the attestation."
       },
-      "effort": "low"
+      "effort": "low",
+      "capabilities": "Text-generation, Voice-generation, Image-generation"
     }
   ]
 }
